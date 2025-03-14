@@ -60,7 +60,7 @@ Docker Compose version v2.19.1
 
 ## Launching Wanaku MCP Router from the Docker Compose file
 
-Download the [`docker-compose.yml`] file for this getting started and save it to any directory on your computer.
+Download the [`docker-compose.yml`](./docker-compose.yml) file for this getting started and save it to any directory on your computer.
 
 Launch the containers.
 
