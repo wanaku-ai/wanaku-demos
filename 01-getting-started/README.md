@@ -6,21 +6,34 @@ Requirements:
 1. Podman or Docker 
 2. An LLM endpoint (can be locally hosted, like Ollama)
 
-## Download Wanaku CLI (UI)
+## Download Wanaku CLI (CLI) - Optional
 
-## Download Wanaku CLI (CLI)
-
-This is optional.
+The CLI can be used to manage the Wanaku router.
 
 ```shell
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.0.1/cli-0.0.1-osx-aarch_64.zip
-unzip cli-0.0.1-osx-aarch_64.zip
-install -m 750 cli-0.0.1-osx-aarch_64/bin/cli $HOME/bin/wanaku
-rm -rf cli-0.0.1-osx-aarch_64 cli-0.0.1-osx-aarch_64.zip
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.0.3/cli-0.0.3-osx-aarch_64.zip
+unzip cli-0.0.3-osx-aarch_64.zip
+install -m 750 cli-0.0.3-osx-aarch_64/bin/cli $HOME/bin/wanaku
+rm -rf cli-0.0.3-osx-aarch_64 cli-0.0.3-osx-aarch_64.zip
 ```
 
+Check if it was installed successfully:
+
 ```shell
-wanaku --help
+wanaku --version
+```
+
+Expected result:
+```
+Wanaku CLI version 0.0.3
+Usage: wanaku [-hv] [COMMAND]
+  -h, --help      Display the help and sub-commands
+  -v, --version   Display the current version of Wanaku CLI
+Commands:
+  resources  Manage resources
+  tools      Manage tools
+  targets    Manage targets
+  toolset    Manage toolsets
 ```
 
 ## Checking the Environment
@@ -31,17 +44,23 @@ Check if podman is available (adjust the command if you use docker).
 podman ps
 ```
 
+Check if docker compose is available. 
+
+```shell
+docker-compose --version 
+```
+
+Expected result: 
+
+```
+Docker Compose version v2.19.1
+```
+
+**NOTE**: the docker-compose version may differ, but that is OK.
+
 ## Launching Wanaku MCP Router from the Docker Compose file
 
-```shell
-wget -c https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/tags/wanaku-0.0.1/docker-compose.yml
-```
-
-Check what is being launched.
-
-```shell
-cat docker-compose.yml
-```
+Download the [`docker-compose.yml`] file for this getting started and save it to any directory on your computer.
 
 Launch the containers.
 
@@ -49,26 +68,87 @@ Launch the containers.
 docker-compose up -d
 ```
 
+**NOTE**: Wanaku is composed of several different services that will automatically register themselves, expose configurations and perform other initializations tasks, therefore, it may take a couple of seconds for it to start.
+
 Check if the containers have launched.
 
 ```
 podman ps
 ```
 
-Open http://localhost:8080/
-
-Add the currency toolset from
-https://github.com/wanaku-ai/wanaku-toolsets/blob/main/toolsets/currency.json
+Expected result: 
 
 ```shell
-wanaku targets tools link --service=http --target=host.docker.internal:9000
+CONTAINER ID  IMAGE                                                          COMMAND        CREATED      STATUS         PORTS                                       NAMES
+4063fa56f5f9  docker.io/valkey/valkey:latest                                 valkey-server  2 hours ago  Up 17 seconds  0.0.0.0:6379->6379/tcp                      demo-valkey-1
+504cafd1f386  quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.3                               2 hours ago  Up 17 seconds  0.0.0.0:9004->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-provider-ftp-1
+bbc907292b00  quay.io/wanaku/wanaku-routing-http-service:wanaku-0.0.3                       2 hours ago  Up 17 seconds  0.0.0.0:9000->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-http-service-1
+83668655ca66  quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.3                                2 hours ago  Up 16 seconds  0.0.0.0:9005->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-provider-s3-1
+862c259cce7a  quay.io/wanaku/wanaku-routing-tavily-service:wanaku-0.0.3                     2 hours ago  Up 16 seconds  0.0.0.0:9006->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-tavily-service-1
+a9910a14a0cd  quay.io/wanaku/wanaku-provider-file:wanaku-0.0.3                              2 hours ago  Up 17 seconds  0.0.0.0:9002->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-provider-file-1
+cd51901f3248  quay.io/wanaku/wanaku-routing-kafka-service:wanaku-0.0.3                      2 hours ago  Up 16 seconds  0.0.0.0:9003->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-kafka-service-1
+337da941f178  quay.io/wanaku/wanaku-routing-yaml-route-service:wanaku-0.0.3                 2 hours ago  Up 17 seconds  0.0.0.0:9001->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-yaml-route-service-1
+c304dfd5af0a  quay.io/wanaku/wanaku-router:wanaku-0.0.3                                     2 hours ago  Up 16 seconds  0.0.0.0:8080->8080/tcp, 8443/tcp            demo-wanaku-router-1
 ```
 
-Wanaku MCP server is available on http://localhost:8080/mcp/sse. Any agent with MCP capabilities configured to access that server, will be able to list and use tools registered on Wanaku.
+Now, check if the services registered themselves, so that Wanaku can find them: 
 
-At this point, you need to configure a client that has MCP capabilities. On this demo, I am going to use a local LibreChat instance configure to access a LLM hosted on my server. 
+```shell
+wanaku targets tools list
+```
 
-First, let's ask the model without configuring an agent: 
+Expected result: 
+
+```
+Service                 Target                            Configurations
+camel-yaml           => 10.89.5.49:9000                =>
+kafka                => 10.89.5.53:9000                => bootstrapHost, replyToTopic
+http                 => 10.89.5.48:9000                =>
+tavily               => 10.89.5.54:9000                =>
+```
+
+This means that Wanaku is fully up and running, and the downstream services registered themselves with the router.
+
+At this point, you can open the UI in your browser. Wanaku listens at http://localhost:8080/ by default. 
+
+## Importing a ToolSet
+
+### Importing a ToolSet on the Web Interface
+
+Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json) toolset. 
+
+Then, on the Wanaku UI, navigate to the tools (i.e.; http://localhost:8080/#/tools) page. There, click on Import Toolset 
+and paste the contents on the form. You should see the new tools added to Wanaku.
+
+You can visit the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository
+for more toolsets.
+
+## Importing a ToolSet via Command Line Interface
+
+Add the currency toolset from the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository:
+
+```shell
+wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json
+```
+
+To check if it worked, you can run `wanaku tools list` to list the tools added to the router:
+
+```shell
+free-currency-conversion-tool => http            => https://economia.awesomeapi.com.br/last/{fromCurrency}-{toCurrency}
+```
+
+## Using Wanaku with an Agent
+
+You can use Wanaku with any tool that supports the Model Context Protocol (MCP) via the HTTP SSE protocol. Any agent with MCP capabilities configured to access that server, will be able to list and use tools registered on Wanaku. You can find many MCP clients [here](https://github.com/punkpeye/awesome-mcp-clients). We have tested Wanaku with: 
+* LibreChat
+* HyperChat
+* Witsy
+
+At this point, you need to configure the client of your choice so that it points to where Wanaku is listening to on. By 
+default, the MCP server is available on http://localhost:8080/mcp/sse.
+
+After that, check if the client is correctly configured and capable of calling MCP tools. To do so, ask it a question 
+such as: 
 
 ```What is today's currency conversion rate from 1 euro to dollar?```
 
@@ -80,14 +160,17 @@ However, I'm a large language model, I don't have real-time access to current ma
 You can check online sources.
 ```
 
-Now, let's try using it with an agent configured
-
-```What is today's currency conversion rate from 1 euro to dollar?```
-
-The response will, of course, vary as the currency rates vary with time, but you should receive a response similar to this:
+However, if everything is working well, then the response should look like this:
 
 ```
 Based on the tool call response, today's currency conversion rate from 1 euro to dollar is approximately 1.03738 USD per EUR.
 
 Please note that this rate may fluctuate constantly due to various market and economic factors, so it's always best to check the current rate for accuracy.
 ```
+
+**NOTE**: the response will, of course, vary as the currency rates vary with time.
+
+If something doesn't work, try inspecting the container logs by running commands such as `podman logs -f demo-wanaku-router-1`.
+
+If you find a bug, don't hesitate to [report it](https://github.com/wanaku-ai/wanaku/issues).
+If you would like to improve something, [reach out to the community](https://github.com/wanaku-ai/wanaku).
