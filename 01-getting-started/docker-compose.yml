@@ -27,7 +27,6 @@ services:
     ports:
       - "9001:9000"
 
-  # Uncomment if you want to enable Kafka
   wanaku-routing-kafka-service:
     depends_on:
       - valkey
@@ -72,7 +71,6 @@ services:
     ports:
       - "9004:9000"
 
-  # Uncomment the lines below to enable access to AWS S3
   wanaku-provider-s3:
     depends_on:
       - valkey
