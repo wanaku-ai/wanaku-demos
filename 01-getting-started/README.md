@@ -115,7 +115,7 @@ At this point, you can open the UI in your browser. Wanaku listens at http://loc
 
 ### Importing a ToolSet on the Web Interface
 
-Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json) toolset. 
+Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.3/toolsets/currency.json) toolset. 
 
 Then, on the Wanaku UI, navigate to the tools (i.e.; http://localhost:8080/#/tools) page. There, click on Import Toolset 
 and paste the contents on the form. You should see the new tools added to Wanaku.
@@ -128,7 +128,7 @@ for more toolsets.
 Add the currency toolset from the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository:
 
 ```shell
-wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json
+wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.3/toolsets/currency.json
 ```
 
 To check if it worked, you can run `wanaku tools list` to list the tools added to the router:
