@@ -1,4 +1,3 @@
-
 # Getting Started with Wanaku
 
 Requirements: 
@@ -8,14 +7,24 @@ Requirements:
 
 ## Download Wanaku CLI (CLI) - Optional
 
-The CLI can be used to manage the Wanaku router.
+The CLI can be used to manage the Wanaku router. You can download the CLI from the [releases page](https://github.com/wanaku-ai/wanaku/releases).
+
+The CLI is distributed in two flavors: 
+
+* Native binaries for Linux and macOS
+* Java-based binaries for all operating systems
+
+For instance, to get the Wanaku CLI for macOS:
 
 ```shell
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.0.3/cli-0.0.3-osx-aarch_64.zip
-unzip cli-0.0.3-osx-aarch_64.zip
-install -m 750 cli-0.0.3-osx-aarch_64/bin/cli $HOME/bin/wanaku
-rm -rf cli-0.0.3-osx-aarch_64 cli-0.0.3-osx-aarch_64.zip
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.0.4/cli-0.0.4-osx-aarch_64.zip
+unzip cli-0.0.4-osx-aarch_64.zip
+install -m 750 cli-0.0.4-osx-aarch_64/bin/cli $HOME/bin/wanaku
+rm -rf cli-0.0.4-osx-aarch_64 cli-0.0.4-osx-aarch_64.zip
 ```
+
+> [!NOTE]
+> Make sure to adjust this according to your OS. 
 
 Check if it was installed successfully:
 
@@ -25,14 +34,17 @@ wanaku --version
 
 Expected result:
 ```
-Wanaku CLI version 0.0.3
+Wanaku CLI version 0.0.4
 Usage: wanaku [-hv] [COMMAND]
   -h, --help      Display the help and sub-commands
   -v, --version   Display the current version of Wanaku CLI
 Commands:
+  forwards   Manage forwards
   resources  Manage resources
-  tools      Manage tools
+  start      Start Wanaku
+  services   Manage services
   targets    Manage targets
+  tools      Manage tools
   toolset    Manage toolsets
 ```
 
@@ -79,16 +91,15 @@ podman ps
 Expected result: 
 
 ```shell
-CONTAINER ID  IMAGE                                                          COMMAND        CREATED      STATUS         PORTS                                       NAMES
-4063fa56f5f9  docker.io/valkey/valkey:latest                                 valkey-server  2 hours ago  Up 17 seconds  0.0.0.0:6379->6379/tcp                      demo-valkey-1
-504cafd1f386  quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.3                               2 hours ago  Up 17 seconds  0.0.0.0:9004->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-provider-ftp-1
-bbc907292b00  quay.io/wanaku/wanaku-routing-http-service:wanaku-0.0.3                       2 hours ago  Up 17 seconds  0.0.0.0:9000->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-http-service-1
-83668655ca66  quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.3                                2 hours ago  Up 16 seconds  0.0.0.0:9005->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-provider-s3-1
-862c259cce7a  quay.io/wanaku/wanaku-routing-tavily-service:wanaku-0.0.3                     2 hours ago  Up 16 seconds  0.0.0.0:9006->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-tavily-service-1
-a9910a14a0cd  quay.io/wanaku/wanaku-provider-file:wanaku-0.0.3                              2 hours ago  Up 17 seconds  0.0.0.0:9002->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-provider-file-1
-cd51901f3248  quay.io/wanaku/wanaku-routing-kafka-service:wanaku-0.0.3                      2 hours ago  Up 16 seconds  0.0.0.0:9003->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-kafka-service-1
-337da941f178  quay.io/wanaku/wanaku-routing-yaml-route-service:wanaku-0.0.3                 2 hours ago  Up 17 seconds  0.0.0.0:9001->9000/tcp, 8080/tcp, 8443/tcp  demo-wanaku-routing-yaml-route-service-1
-c304dfd5af0a  quay.io/wanaku/wanaku-router:wanaku-0.0.3                                     2 hours ago  Up 16 seconds  0.0.0.0:8080->8080/tcp, 8443/tcp            demo-wanaku-router-1
+CONTAINER ID  IMAGE                                                       COMMAND     CREATED         STATUS         PORTS                   NAMES
+ada51fc96d6b  quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.4                         50 seconds ago  Up 50 seconds  0.0.0.0:9004->9000/tcp  01-getting-started-wanaku-provider-ftp-1
+bcb57c4665ad  quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.4                    50 seconds ago  Up 50 seconds  0.0.0.0:9000->9000/tcp  01-getting-started-wanaku-tool-service-http-1
+bc649001189a  quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.4                          50 seconds ago  Up 50 seconds  0.0.0.0:9005->9000/tcp  01-getting-started-wanaku-provider-s3-1
+86b7649c0d92  quay.io/wanaku/wanaku-tool-service-tavily:wanaku-0.0.4                  50 seconds ago  Up 50 seconds  0.0.0.0:9006->9000/tcp  01-getting-started-wanaku-tool-service-tavily-1
+9ff41b970f1b  quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.4                   50 seconds ago  Up 50 seconds  0.0.0.0:9003->9000/tcp  01-getting-started-wanaku-tool-service-kafka-1
+ff1bc724b8ea  quay.io/wanaku/wanaku-provider-file:wanaku-0.0.4                        50 seconds ago  Up 50 seconds  0.0.0.0:9002->9000/tcp  01-getting-started-wanaku-provider-file-1
+899320498a0e  quay.io/wanaku/wanaku-tool-service-yaml-route:wanaku-0.0.4              50 seconds ago  Up 50 seconds  0.0.0.0:9001->9000/tcp  01-getting-started-wanaku-tool-service-yaml-route-1
+068e6fdcdcd3  quay.io/wanaku/wanaku-router:wanaku-0.0.4                               50 seconds ago  Up 50 seconds  0.0.0.0:8080->8080/tcp  01-getting-started-wanaku-router-1
 ```
 
 Now, check if the services registered themselves, so that Wanaku can find them: 
@@ -115,7 +126,7 @@ At this point, you can open the UI in your browser. Wanaku listens at http://loc
 
 ### Importing a ToolSet on the Web Interface
 
-Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.3/toolsets/currency.json) toolset. 
+Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.4/toolsets/currency.json) toolset. 
 
 Then, on the Wanaku UI, navigate to the tools (i.e.; http://localhost:8080/#/tools) page. There, click on Import Toolset 
 and paste the contents on the form. You should see the new tools added to Wanaku.
@@ -128,7 +139,7 @@ for more toolsets.
 Add the currency toolset from the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository:
 
 ```shell
-wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.3/toolsets/currency.json
+wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.4/toolsets/currency.json
 ```
 
 To check if it worked, you can run `wanaku tools list` to list the tools added to the router:

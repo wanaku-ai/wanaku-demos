@@ -1,10 +1,10 @@
 # Trying Camel JBang with Wanaku
 
 1. Download the CLI:
-https://github.com/wanaku-ai/wanaku/releases/download/early-access/cli-0.0.4-SNAPSHOT.zip
+   https://github.com/wanaku-ai/wanaku/releases/download/v0.0.4/cli-0.0.4.zip
 
 > [!IMPORTANT]
-> For this, you need at least Wanaku 0.0.4 or newer. The guide is using the packaged jar, but native works just as well.
+> This is using the Java binaries. You can also find native executables on the [releases page](https://github.com/wanaku-ai/wanaku/releases).
 
 2. Extract it and make sure that its directory is in the PATH.
 

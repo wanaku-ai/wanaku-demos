@@ -1,102 +1,70 @@
 version: '3'
 
 services:
-  valkey:
-    image: valkey/valkey
-    ports:
-      - "6379:6379"
-
-  wanaku-routing-http-service:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-routing-http-service:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+  wanaku-tool-service-http:
+    image: quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.4
     ports:
       - "9000:9000"
-  wanaku-routing-yaml-route-service:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-routing-yaml-route-service:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
+
+  wanaku-tool-service-yaml-route:
+    image: quay.io/wanaku/wanaku-tool-service-yaml-route:wanaku-0.0.4
     ports:
       - "9001:9000"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
 
-  wanaku-routing-kafka-service:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-routing-kafka-service:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+  # Uncomment if you want to enable Kafka
+  wanaku-tool-service-kafka:
+    image: quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.4
     ports:
       - "9003:9000"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
 
-  wanaku-routing-tavily-service:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-routing-tavily-service:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
-#      TAVILY_API_KEY: include-you-api-key-here
+  wanaku-tool-service-tavily:
+    image: quay.io/wanaku/wanaku-tool-service-tavily:wanaku-0.0.4
+    #    environment:
+    #      TAVILY_API_KEY: include-you-api-key-here
     ports:
       - "9006:9000"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
 
   wanaku-provider-file:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-provider-file:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+    image: quay.io/wanaku/wanaku-provider-file:wanaku-0.0.4
     ports:
       - "9002:9000"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
 
   wanaku-provider-ftp:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+    image: quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.4
     ports:
       - "9004:9000"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
 
+  # Uncomment the lines below to enable access to AWS S3
   wanaku-provider-s3:
-    depends_on:
-      - valkey
-    image: quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+    image: quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.4
     ports:
       - "9005:9000"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
 
   wanaku-router:
     depends_on:
-      - wanaku-routing-http-service
-      - wanaku-routing-kafka-service
-      - wanaku-routing-tavily-service
-      - wanaku-routing-yaml-route-service
+      - wanaku-tool-service-http
+      - wanaku-tool-service-kafka
+      - wanaku-tool-service-tavily
+      - wanaku-tool-service-yaml-route
       - wanaku-provider-file
       - wanaku-provider-ftp
       - wanaku-provider-s3
-      - valkey
-    image: quay.io/wanaku/wanaku-router:wanaku-0.0.3
-    environment:
-      VALKEY_HOST: valkey
-      VALKEY_PORT: 6379
-      VALKEY_TIMEOUT: 10
+    image: quay.io/wanaku/wanaku-router:wanaku-0.0.4
     ports:
       - "8080:8080"
+    volumes:
+      - ~/.wanaku/router:/home/default/.wanaku/router
