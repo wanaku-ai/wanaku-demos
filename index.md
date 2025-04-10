@@ -3,11 +3,10 @@ layout: home
 
 hero:
   name: "Wanaku MCP Router Demos"
-  text: "Demos"
-  tagline: These demos help understanding step-by-step how to use Wanaku.
+  tagline: Learn step-by-step how to use Wanaku.
 
-features:
-  - title: Getting Started With Wanaku
-    details: Your first steps with Wanaku
-    link: ./01-getting-started/README
+  actions:
+    - theme: brand
+      text: Read the getting started guide
+      link: ./01-getting-started/README
 ---
