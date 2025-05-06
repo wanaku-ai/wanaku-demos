@@ -9,6 +9,7 @@ one, then check the table below.
 
 | Version                                                              |
 |----------------------------------------------------------------------|
+| [0.0.5](https://github.com/wanaku-ai/wanaku-demos/tree/wanaku-0.0.5) |
 | [0.0.4](https://github.com/wanaku-ai/wanaku-demos/tree/wanaku-0.0.4) |
 | [0.0.3](https://github.com/wanaku-ai/wanaku-demos/tree/wanaku-0.0.3) |
 | [0.0.1](https://github.com/wanaku-ai/wanaku-demos/tree/wanaku-0.0.1) |
