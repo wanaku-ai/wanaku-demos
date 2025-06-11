@@ -139,7 +139,7 @@ for more toolsets.
 Add the currency toolset from the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository:
 
 ```shell
-wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.5/toolsets/currency.json
+wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json
 ```
 
 To check if it worked, you can run `wanaku tools list` to list the tools added to the router:
