@@ -350,6 +350,19 @@ With the configuration complete, it's time to test the agent in the Playground.
       * You should see the agent acknowledge its use of the `getComponentURL` tool and provide a response pointing to the [Kafka component page](https://camel.apache.org/components/4.10.x/kafka-component.html).
 
 
+## Shutdown
+
+After you have finished playing with the system, you can shutdown everything by running the following commands:
+
+```shell
+podman compose -f langflow/docker-compose.yaml down
+wanaku forwards remove --name camel-catalog-mcp
+podman compose -f mcp-servers/docker-compose.yaml down
+podman compose -f wanaku/docker-compose.yaml down
+podman compose -f rag-database/docker-compose.yaml down
+```
+
+
 ## Congratulations!
 
 You've successfully reached the end of the demo. Well done!
