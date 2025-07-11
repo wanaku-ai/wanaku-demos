@@ -1,0 +1,45 @@
+services:
+  wanaku-tool-service-http:
+    environment:
+      WANAKU_SERVICE_REGISTRATION_URI: http://wanaku-router:8080
+      QUARKUS_GRPC_SERVER_PORT: 9000
+    depends_on:
+      wanaku-router:
+        condition: service_healthy
+    image: quay.io/wanaku/wanaku-tool-service-http:latest
+    pull_policy: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - wanaku_services:/home/default/.wanaku/services
+
+  wanaku-tool-service-duckduckgo:
+    environment:
+      WANAKU_SERVICE_REGISTRATION_URI: http://wanaku-router:8080
+      QUARKUS_GRPC_SERVER_PORT: 9001
+    depends_on:
+      wanaku-router:
+        condition: service_healthy
+    image: quay.io/wanaku/wanaku-tool-service-duckduckgo:latest
+    pull_policy: always
+    ports:
+      - "9001:9000"
+    volumes:
+      - wanaku_services:/home/default/.wanaku/services
+
+  wanaku-router:
+    image: quay.io/wanaku/wanaku-router:latest
+    pull_policy: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - wanaku_router:/home/default/.wanaku/router
+    healthcheck:
+      test: curl -f localhost:8080/api/v1/management/info/version || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  wanaku_router:
+  wanaku_services:
