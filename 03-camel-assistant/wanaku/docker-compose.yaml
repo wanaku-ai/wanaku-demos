@@ -6,7 +6,7 @@ services:
     depends_on:
       wanaku-router:
         condition: service_healthy
-    image: quay.io/wanaku/wanaku-tool-service-http:release-prep
+    image: quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.6
     pull_policy: always
     ports:
       - "9000:9000"
@@ -20,7 +20,7 @@ services:
     depends_on:
       wanaku-router:
         condition: service_healthy
-    image: quay.io/wanaku/wanaku-tool-service-duckduckgo:release-prep
+    image: quay.io/wanaku/wanaku-tool-service-duckduckgo:wanaku-0.0.6
     pull_policy: always
     ports:
       - "9001:9000"
@@ -28,7 +28,7 @@ services:
       - wanaku_services:/home/default/.wanaku/services
 
   wanaku-router:
-    image: quay.io/wanaku/wanaku-router:release-prep
+    image: quay.io/wanaku/wanaku-router:wanaku-0.0.6
     pull_policy: always
     ports:
       - "8080:8080"
