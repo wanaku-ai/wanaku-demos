@@ -30,10 +30,6 @@ After downloading the file, unzip it to a location of your choice. You will see 
 
 To ensure the tool is working correctly, open your terminal or command prompt, navigate into the unzipped directory, and run the command to view the help message.
 
-### Step-by-step
-
------
-
 #### **Linux & macOS**
 
 On Linux and macOS, you'll first need to make the script executable.
@@ -43,10 +39,7 @@ On Linux and macOS, you'll first need to make the script executable.
 cd camel-data-loader-cli-1.0.0-SNAPSHOT
 
 # Make the script executable
-chmod +x bin/camel-data-loader-cli
-
-# Run the help command to see available options
-./bin/camel-data-loader-cli --help
+./camel-data-loader-cli --help
 ```
 
 -----
@@ -58,7 +51,7 @@ chmod +x bin/camel-data-loader-cli
 cd camel-data-loader-cli-1.0.0-SNAPSHOT
 
 # Run the help command to see available options
-.\bin\camel-data-loader-cli.bat --help
+.\camel-data-loader-cli.bat --help
 ```
 
 -----
