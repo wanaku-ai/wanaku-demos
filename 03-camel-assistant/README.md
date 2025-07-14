@@ -96,10 +96,7 @@ pip install -U "huggingface_hub[cli]"
 Once the CLI is ready, run the following command to download the dataset. It will be saved to a local directory named `camel-components`.
 
 ```shell
-huggingface-cli download \
-  --repo-type dataset \
-  --local-dir camel-components \
-  megacamelus/camel-components
+huggingface-cli download --repo-type dataset --local-dir camel-components megacamelus/camel-components
 ```
 
 ## 4\. Load the Camel Data Set
@@ -113,7 +110,7 @@ Execute the following command in your terminal. This command points the data loa
 > **Important**: Replace `[PATH_TO_YOUR_DATASET]` with the actual path to the `camel-components` directory you downloaded earlier.
 
 ```shell
-./camel-data-loader-cli consume dataset \
+./camel-data-loader consume dataset \
   --path [PATH_TO_YOUR_DATASET]/camel-components/ \
   --source org.apache.camel
 ```
@@ -176,11 +173,7 @@ Now, let's extend Wanaku's capabilities by adding some tools. The demo comes pre
 This command registers a new tool with Wanaku that allows it to perform internet searches using DuckDuckGo.
 
 ```shell
-wanaku tools add \
-  --name "duckduckgo-search" \
-  --description "Search on the internet using DuckDuckGo" \
-  --uri "duckduckgo://search" \
-  --type duckduckgo
+wanaku tools add --name "duckduckgo-search" --description "Search on the internet using DuckDuckGo" --uri "duckduckgo://search" --type duckduckgo
 ```
 
 -----
@@ -218,9 +211,7 @@ podman compose -f mcp-servers/docker-compose.yaml up -d
 Now, let's make the tools from the **Camel Catalog MCP** server available within Wanaku. This command creates a "forward," allowing Wanaku to act as a proxy and expose all the catalog's tools as if they were its own. This centralizes all capabilities for the AI agents.
 
 ```shell
-wanaku forwards add \
-  --name camel-catalog-mcp \
-  --service=http://host.docker.internal:8010/mcp/sse
+wanaku forwards add --name camel-catalog-mcp --service=http://host.docker.internal:8010/mcp/sse
 ```
 
 -----
@@ -358,8 +349,9 @@ With the configuration complete, it's time to test the agent in the Playground.
 After you have finished playing with the system, you can shutdown everything by running the following commands:
 
 ```shell
-podman compose -f langflow/docker-compose.yaml down
+wanaku tools remove --name duckduckgo-search
 wanaku forwards remove --name camel-catalog-mcp
+podman compose -f langflow/docker-compose.yaml down
 podman compose -f mcp-servers/docker-compose.yaml down
 podman compose -f wanaku/docker-compose.yaml down
 podman compose -f rag-database/docker-compose.yaml down
