@@ -2,7 +2,7 @@
 
 ## Pre-requisite: Ollama
 
-We will run Ollama to serve the embedding model.
+We will run Ollama to serve the embedding model. Its job is to read our Apache Camel dataset and turn it into a numerical format that the AI can search through.
 
 1. Install and run Ollama (or any other OpenAI compatible API in a host accessible from the containers).
 
@@ -13,7 +13,7 @@ able to launch it with something as simple as:
 ollama serve
 ```
 
-2. Pull the `mistral:latest` model on the host you are running Ollama
+2. Pull the `nomic-embed-text:latest` model on the host you are running Ollama
 
 ```shell
 ollama pull nomic-embed-text:latest
