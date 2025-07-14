@@ -4,7 +4,10 @@
 
 We will run Ollama to serve the embedding model.
 
-1. Install and run Ollama (or any other OpenAI compatible API in a host accessible from the containers)
+1. Install and run Ollama (or any other OpenAI compatible API in a host accessible from the containers).
+
+The specific details may vary depending on your operating system. On macOS, it can be launched like any other [application after you download and install it](https://ollama.com/download/mac). On Linux, a [SystemD service may be created](https://github.com/ollama/ollama/blob/main/docs/linux.md). In any case, you should be
+able to launch it with something as simple as:
 
 ```shell
 ollama serve
