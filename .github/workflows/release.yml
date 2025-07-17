@@ -9,9 +9,6 @@ on:
       currentDevelopmentVersion:
         description: 'The current development version (without SNAPSHOT)'
         required: true
-      nextDevelopmentVersion:
-        description: 'The next development version (without SNAPSHOT)'
-        required: true
 
 jobs:
   perform-release:
