@@ -13,7 +13,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9000:9000"
@@ -29,7 +29,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-tool-service-yaml-route:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-tool-service-yaml-route:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9001:9000"
@@ -45,7 +45,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9003:9000"
@@ -60,7 +60,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-tool-service-tavily:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-tool-service-tavily:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9006:9000"
@@ -75,7 +75,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-provider-file:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-provider-file:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9002:9000"
@@ -90,7 +90,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9004:9000"
@@ -106,7 +106,7 @@ services:
         condition: service_healthy
       init-myservice:
         condition: service_completed_successfully
-    image: quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.7
     pull_policy: always
     ports:
       - "9005:9000"
@@ -114,7 +114,7 @@ services:
       - ~/.wanaku/services:/home/default/.wanaku/services
 
   wanaku-router:
-    image: quay.io/wanaku/wanaku-router:wanaku-0.0.6
+    image: quay.io/wanaku/wanaku-router:wanaku-0.0.7
     pull_policy: always
     ports:
       - "8080:8080"
