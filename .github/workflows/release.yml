@@ -24,6 +24,8 @@ jobs:
 
       - name: Create release
         run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
           find . -iname 'docker-compose.y*ml' -exec sed -i -e "s/wanaku-${{ github.event.inputs.previousDevelopmentVersion }}/wanaku-${{ github.event.inputs.currentDevelopmentVersion }}/g" {} \;
           git add -u 
           git commit -m "Updated docker-compose files for Wanaku release ${{ github.event.inputs.currentDevelopmentVersion }}"
