@@ -22,7 +22,7 @@ ollama pull nomic-embed-text:latest
 ## 1\. Configure the data loader system to prepare the RAG environment
 
 
-First things first, let's get the command-line interface (CLI) you'll use to load data into the system. This tool is your starting point for getting your data where it needs to go.
+Let's get the command-line interface (CLI) you'll use to load data into the system. This tool is your starting point for getting your data where it needs to go.
 
 [Download the Data Loader CLI (ZIP)](https://github.com/orpiske/camel-data-loader/releases/download/early-access/camel-data-loader-cli-1.0.0-SNAPSHOT.zip)
 
