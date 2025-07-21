@@ -13,6 +13,11 @@ able to launch it with something as simple as:
 ollama serve
 ```
 
+> [IMPORTANT]
+> On Linux, ollama may be managed by systemd. Depending on your system configuration, it may not be listening on the expected 
+> port for this demo. In such case, you can stop the service (`sudo systemctl stop ollama`) and the launch it 
+> using `OLLAMA_HOST=0.0.0.0:11434 ollama serve`
+
 2. Pull the `nomic-embed-text:latest` model on the host you are running Ollama
 
 ```shell
@@ -31,8 +36,6 @@ After downloading the file, unzip it to a location of your choice. You will see 
 To ensure the tool is working correctly, open your terminal or command prompt, navigate into the unzipped directory, and run the command to view the help message.
 
 #### **Linux & macOS**
-
-On Linux and macOS, you'll first need to make the script executable.
 
 ```bash
 # Navigate to the directory
@@ -91,6 +94,10 @@ Once the CLI is ready, run the following command to download the dataset. It wil
 ```shell
 huggingface-cli download --repo-type dataset --local-dir camel-components megacamelus/camel-components
 ```
+
+> [IMPORTANT]
+> HuggingFace may limit the number of requests from non-authenticated accounts, which may cause the download to be very slow 
+> and/or fail at times. In this case, you can either try again after a while or authenticate.
 
 ## 4\. Load the Camel Data Set
 
