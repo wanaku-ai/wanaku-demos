@@ -164,6 +164,9 @@ By managing how AI agents access data and tools, Wanaku ensures that all interac
 podman compose -f wanaku/docker-compose.yaml up -d
 ```
 
+> [IMPORTANT] 
+> Please make sure to download the latest [Wanaku CLI from the releases page](https://github.com/wanaku-ai/wanaku/releases/). 
+
 ## 6\. Add Tools to Wanaku
 
 Now, let's extend Wanaku's capabilities by adding some tools. The demo comes pre-configured for two tools: one for making HTTP calls and another for searching with DuckDuckGo. We'll start by adding the search tool.
