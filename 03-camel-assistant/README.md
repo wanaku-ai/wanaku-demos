@@ -279,14 +279,7 @@ After uploading, the agent workflow will load onto the canvas, looking like this
 
 Next, we need to configure LangFlow's global settings to connect it to our running services.
 
-1.  **Add the Wanaku MCP Server**
-
-      * Navigate to the MCP Servers settings: **http://localhost:7860/settings/mcp-servers**.
-      * Add a new server with the following parameters:
-          * **Name**: `Wanaku MCP Router`
-          * **SSE URL**: `http://host.docker.internal:8080/mcp/sse`
-
-2.  **Set Global Variables and Credentials**
+1.  **Set Global Variables and Credentials**
 
       * Navigate to the Global Variables settings: **http://localhost:7860/settings/global-variables**.
       * Add the following variables. These tell the agent where to find the vector database and the local AI model server.
@@ -300,6 +293,18 @@ Next, we need to configure LangFlow's global settings to connect it to our runni
     > **Note**: This agent is pre-configured for Google Gemini. However, the workflow can be easily adapted to use other model APIs like Ollama or OpenAI.
 
 ### Step 9.3: Configure the Workflow Components
+
+Then, we need to make sure we have a global MCP server added.
+
+1.  **Add the Wanaku MCP Server**
+
+    * Navigate to the MCP Servers settings: **http://localhost:7860/settings/mcp-servers**.
+    * Add a new server with the following parameters:
+        * **Name**: `Wanaku MCP Router`
+        * **SSE URL**: `http://host.docker.internal:8080/mcp/sse`
+
+
+### Step 9.4: Configure the Workflow Components
 
 Now, return to the agent workflow canvas to connect the settings to the visual components.
 
