@@ -321,7 +321,7 @@ Now, return to the agent workflow canvas to connect the settings to the visual c
 3.  **Configure the Agent Model**
 
       * Find the main **Agent** component.
-      * If you are using Google Gemini, ensure the **Model** is set to `gemini-1.5-flash` or another model with Function Calling capabilities (like `gemini-1.5-pro`).
+      * If you are using Google Gemini, ensure the **Model** is set to `gemini-2.5-flash` or another model with Function Calling capabilities (like `gemini-2.5-pro`).
 
 ### Step 9.4: Test the Agent
 
