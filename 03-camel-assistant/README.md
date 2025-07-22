@@ -196,7 +196,7 @@ name                type        uri
 duckduckgo-search   duckduckgo  duckduckgo://search
 ```
 
-Alternatively, you can view all registered tools in the Wanaku UI by navigating to **http://localhost:8080/\#/tools**.
+Alternatively, you can view all registered tools in the Wanaku UI by navigating to **http://localhost:8080/#/tools**.
 
 
 # 7\. Launch MCP forward
