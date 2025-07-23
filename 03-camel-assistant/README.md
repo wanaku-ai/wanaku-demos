@@ -1,5 +1,9 @@
 # Wanaku + Camel Assistant
 
+Build a powerful AI Agent that knows everything about Apache Camel! In this comprehensive tutorial, 
+we'll show you how to go beyond generic chatbots and create a specialized assistant using Retrieval-Augmented Generation (RAG), 
+Wanaku MCP Router as the tool provider and LangFlow as the Visual AI Designer.
+
 ## Pre-requisite: Ollama
 
 We will run Ollama to serve the embedding model. Its job is to read our Apache Camel dataset and turn it into a numerical format that the AI can search through.
