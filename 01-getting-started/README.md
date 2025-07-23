@@ -17,10 +17,10 @@ The CLI is distributed in two flavors:
 For instance, to get the Wanaku CLI for macOS:
 
 ```shell
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.0.5/cli-0.0.5-osx-aarch_64.zip
-unzip cli-0.0.5-osx-aarch_64.zip
-install -m 750 cli-0.0.5-osx-aarch_64/bin/cli $HOME/bin/wanaku
-rm -rf cli-0.0.5-osx-aarch_64 cli-0.0.5-osx-aarch_64.zip
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.0.7/cli-0.0.7-osx-aarch_64.zip
+unzip cli-0.0.7-osx-aarch_64.zip
+install -m 750 cli-0.0.7-osx-aarch_64/bin/cli $HOME/bin/wanaku
+rm -rf cli-0.0.7-osx-aarch_64 cli-0.0.7-osx-aarch_64.zip
 ```
 
 > [!NOTE]
@@ -34,18 +34,20 @@ wanaku --version
 
 Expected result:
 ```
-Wanaku CLI version 0.0.5
+Wanaku CLI version 0.0.7
 Usage: wanaku [-hv] [COMMAND]
   -h, --help      Display the help and sub-commands
   -v, --version   Display the current version of Wanaku CLI
 Commands:
-  forwards   Manage forwards
-  resources  Manage resources
-  start      Start Wanaku
-  services   Manage services
-  targets    Manage targets
-  tools      Manage tools
-  toolset    Manage toolsets
+  forwards      Manage forwards
+  resources     Manage resources
+  start         Start Wanaku
+  capabilities  Manage capabilities
+  targets       Manage targets
+  tools         Manage tools
+  toolset       Manage toolsets
+  namespaces    Manage namespaces
+
 ```
 
 ## Checking the Environment
@@ -92,14 +94,14 @@ Expected result:
 
 ```shell
 CONTAINER ID  IMAGE                                                       COMMAND     CREATED         STATUS         PORTS                   NAMES
-ada51fc96d6b  quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.5                         50 seconds ago  Up 50 seconds  0.0.0.0:9004->9000/tcp  01-getting-started-wanaku-provider-ftp-1
-bcb57c4665ad  quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.5                    50 seconds ago  Up 50 seconds  0.0.0.0:9000->9000/tcp  01-getting-started-wanaku-tool-service-http-1
-bc649001189a  quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.5                          50 seconds ago  Up 50 seconds  0.0.0.0:9005->9000/tcp  01-getting-started-wanaku-provider-s3-1
-86b7649c0d92  quay.io/wanaku/wanaku-tool-service-tavily:wanaku-0.0.5                  50 seconds ago  Up 50 seconds  0.0.0.0:9006->9000/tcp  01-getting-started-wanaku-tool-service-tavily-1
-9ff41b970f1b  quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.5                   50 seconds ago  Up 50 seconds  0.0.0.0:9003->9000/tcp  01-getting-started-wanaku-tool-service-kafka-1
-ff1bc724b8ea  quay.io/wanaku/wanaku-provider-file:wanaku-0.0.5                        50 seconds ago  Up 50 seconds  0.0.0.0:9002->9000/tcp  01-getting-started-wanaku-provider-file-1
-899320498a0e  quay.io/wanaku/wanaku-tool-service-yaml-route:wanaku-0.0.5              50 seconds ago  Up 50 seconds  0.0.0.0:9001->9000/tcp  01-getting-started-wanaku-tool-service-yaml-route-1
-068e6fdcdcd3  quay.io/wanaku/wanaku-router:wanaku-0.0.5                               50 seconds ago  Up 50 seconds  0.0.0.0:8080->8080/tcp  01-getting-started-wanaku-router-1
+ada51fc96d6b  quay.io/wanaku/wanaku-provider-ftp:wanaku-0.0.7                         50 seconds ago  Up 50 seconds  0.0.0.0:9004->9000/tcp  01-getting-started-wanaku-provider-ftp-1
+bcb57c4665ad  quay.io/wanaku/wanaku-tool-service-http:wanaku-0.0.7                    50 seconds ago  Up 50 seconds  0.0.0.0:9000->9000/tcp  01-getting-started-wanaku-tool-service-http-1
+bc649001189a  quay.io/wanaku/wanaku-provider-s3:wanaku-0.0.7                          50 seconds ago  Up 50 seconds  0.0.0.0:9005->9000/tcp  01-getting-started-wanaku-provider-s3-1
+86b7649c0d92  quay.io/wanaku/wanaku-tool-service-tavily:wanaku-0.0.7                  50 seconds ago  Up 50 seconds  0.0.0.0:9006->9000/tcp  01-getting-started-wanaku-tool-service-tavily-1
+9ff41b970f1b  quay.io/wanaku/wanaku-tool-service-kafka:wanaku-0.0.7                   50 seconds ago  Up 50 seconds  0.0.0.0:9003->9000/tcp  01-getting-started-wanaku-tool-service-kafka-1
+ff1bc724b8ea  quay.io/wanaku/wanaku-provider-file:wanaku-0.0.7                        50 seconds ago  Up 50 seconds  0.0.0.0:9002->9000/tcp  01-getting-started-wanaku-provider-file-1
+899320498a0e  quay.io/wanaku/wanaku-tool-service-yaml-route:wanaku-0.0.7              50 seconds ago  Up 50 seconds  0.0.0.0:9001->9000/tcp  01-getting-started-wanaku-tool-service-yaml-route-1
+068e6fdcdcd3  quay.io/wanaku/wanaku-router:wanaku-0.0.7                               50 seconds ago  Up 50 seconds  0.0.0.0:8080->8080/tcp  01-getting-started-wanaku-router-1
 ```
 
 Now, check if the services registered themselves, so that Wanaku can find them: 
@@ -126,7 +128,7 @@ At this point, you can open the UI in your browser. Wanaku listens at http://loc
 
 ### Importing a ToolSet on the Web Interface
 
-Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.5/toolsets/currency.json) toolset. 
+Copy the contents of the [currency](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/tags/wanaku-0.0.7/toolsets/currency.json) toolset. 
 
 Then, on the Wanaku UI, navigate to the tools (i.e.; http://localhost:8080/#/tools) page. There, click on Import Toolset 
 and paste the contents on the form. You should see the new tools added to Wanaku.
