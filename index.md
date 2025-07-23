@@ -16,7 +16,7 @@ features:
     link: ./02-running-camel-jbang/README
   - title: Build a powerful AI Agent that knows everything about Apache Camel
     details: Build an Expert AI Agent for Apache Camel with LangFlow & Wanaku (MCP)
-    link: ./03-camel-assistant//README
+    link: ./03-camel-assistant/README
   - title: Building a Plain Java Capability for Wanaku
     details: This guide will walk you through creating a simple "echo" capability for Wanaku using Java with the Java Capabilities SDK
     link: ./04-plain-java-services/README
