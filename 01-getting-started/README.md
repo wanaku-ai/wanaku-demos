@@ -2,6 +2,9 @@
 
 Requirements: 
 
+> [IMPORTANT]
+> This demo was intended for Wanaku versions from 0.0.1 to 0.0.7. As of 0.0.8, use `wanaku start local` for trying Wanaku locally.
+
 1. Podman or Docker 
 2. An LLM endpoint (can be locally hosted, like Ollama)
 

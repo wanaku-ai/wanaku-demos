@@ -1,5 +1,9 @@
 # Connect Wanaku with Custom Camel JBang Tools
 
+> [IMPORTANT]
+> This demo was intended for Wanaku versions from 0.0.1 to 0.0.7. As of 0.0.8, use the [Camel Integration Capability](https://github.com/wanaku-ai/camel-integration-capability/)
+> to run Camel workloads on Wanaku.
+
 This guide provides instructions for integrating custom Apache Camel routes, executed via Camel JBang, as tools within the 
 Wanaku MCP Router. 
 
