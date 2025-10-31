@@ -1,0 +1,27 @@
+apiVersion: "wanaku.ai/v1alpha1"
+kind: Wanaku
+metadata:
+  name: wanaku-dev
+spec:
+  auth:
+    authServer: "http://address-to-your-keycloak-instance.com"
+    # Address of the proxy (could be the same as the auth server - default) or "auto" (for using Wanaku as the proxy via OIDC proxy)
+    authProxy: "auto"
+  secrets:
+    oidcCredentialsSecret: "ClientCredentials"
+  capabilities:
+    - name: wanaku-http
+      image: quay.io/wanaku/wanaku-tool-service-http:latest
+    - name: employee-system
+      type: camel-integration-capability
+      image: quay.io/wanaku/camel-integration-capability:latest
+      # When using a camel integration capability, must always set the path to the routes file and to the rules file
+      env:
+        # The path to the routes file, should be within /data (i.e.: /data/my-system.camel.yaml)
+        - name: ROUTES_PATH
+          value: "/data/employee-backend.camel.yaml"
+        # The path to the rules file, should be within /data (i.e.: /data/my-system-rules.yaml)
+        - name: ROUTES_RULES
+          value: "/data/employee-backend-rules.yaml"
+        - name: DEPENDENCIES
+          value: "org.apache.camel:camel-http:4.14.1,org.apache.camel:camel-jackson:4.14.1"
