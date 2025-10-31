@@ -1,0 +1,102 @@
+- route:
+    id: get-employee-information
+    description: Retrieve employee basic information
+    from:
+      uri: direct:employee-information
+      steps:
+        - setHeader:
+            constant: GET
+            name: CamelHttpMethod
+        - toD:
+            uri: http://localhost:8081/employee/${header.EMPLOYEE_ID}/information
+            parameters:
+              bridgeEndpoint: true
+        - convertBodyTo:
+            id: convertBodyTo-2338
+            type: String
+        - log:
+            message: "Retrieved employee reviews for ID: ${header.EMPLOYEE_ID}"
+- route:
+    id: get-employee-reviews
+    description: Retrieve employee performance reviews
+    from:
+      uri: direct:employee-reviews
+      steps:
+        - setHeader:
+            constant: GET
+            name: CamelHttpMethod
+        - toD:
+            uri: http://localhost:8081/employee/${header.EMPLOYEE_ID}/reviews
+            parameters:
+              bridgeEndpoint: true
+        - log:
+            message: "Retrieved employee reviews for ID: ${header.EMPLOYEE_ID}"
+        - convertBodyTo:
+            id: convertBodyTo-2339
+            type: String
+- route:
+    id: get-employee-compensation
+    description: Retrieve employee compensation details
+    from:
+      uri: direct:employee-compensation
+      steps:
+        - setHeader:
+            constant: GET
+            name: CamelHttpMethod
+        - toD:
+            uri: http://localhost:8081/employee/${header.EMPLOYEE_ID}/compensation
+            parameters:
+              bridgeEndpoint: true
+        - log:
+            message: "Retrieved employee compensation for ID: ${header.EMPLOYEE_ID}"
+        - convertBodyTo:
+            id: convertBodyTo-2340
+            type: String
+- route:
+    id: get-employee-complete-profile
+    description: Retrieve complete employee profile (all three endpoints)
+    from:
+      uri: direct:employee-complete-profile
+      steps:
+        - log:
+            message: "Fetching complete profile for employee ID: ${header.EMPLOYEE_ID}"
+        - setProperty:
+            name: employeeId
+            simple: ${header.EMPLOYEE_ID}
+        - to:
+            uri: direct:employee-information
+        - convertBodyTo:
+            type: String
+        - setProperty:
+            name: employeeInformation
+            simple: ${body}
+        - setHeader:
+            name: EMPLOYEE_ID
+            simple: ${exchangeProperty.employeeId}
+        - to:
+            uri: direct:employee-reviews
+        - convertBodyTo:
+            type: String
+        - setProperty:
+            name: employeeReviews
+            simple: ${body}
+        - setHeader:
+            name: EMPLOYEE_ID
+            simple: ${exchangeProperty.employeeId}
+        - to:
+            uri: direct:employee-compensation
+        - convertBodyTo:
+            type: String
+        - setProperty:
+            name: employeeCompensation
+            simple: ${body}
+        - setBody:
+            simple: |
+              {
+                "information": ${exchangeProperty.employeeInformation},
+                "reviews": ${exchangeProperty.employeeReviews},
+                "compensation": ${exchangeProperty.employeeCompensation}
+              }
+        - log:
+            message: "Complete profile retrieved for employee ID:
+              ${exchangeProperty.employeeId}"
