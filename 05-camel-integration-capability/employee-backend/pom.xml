@@ -16,6 +16,10 @@
     <quarkus.platform.version>3.27.0</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.1.2</surefire-plugin.version>
+
+      <quarkus.container-image.registry>quay.io</quarkus.container-image.registry>
+<!--      <quarkus.container-image.group>wanaku</quarkus.container-image.group>-->
+      <quarkus.container-image.tag>latest</quarkus.container-image.tag>
   </properties>
 
   <dependencyManagement>
