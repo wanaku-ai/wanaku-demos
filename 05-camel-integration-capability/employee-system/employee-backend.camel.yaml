@@ -14,8 +14,25 @@
         - convertBodyTo:
             id: convertBodyTo-2338
             type: String
-        - log:
-            message: "Retrieved employee reviews for ID: ${header.EMPLOYEE_ID}"
+        - choice:
+            id: choice-1451
+            otherwise:
+              id: otherwise-3272
+              steps:
+                - log:
+                    id: log-1277
+                    message: ${body}
+            when:
+              - id: when-2868
+                steps:
+                  - setBody:
+                      id: setBody-5284
+                      constant:
+                        expression: '{"error":"Employee information for executives is restricted"}'
+                  - log:
+                      message: "Retrieved employee reviews for ID: ${header.EMPLOYEE_ID}"
+                simple:
+                  expression: ${body} contains 'Z10'
 - route:
     id: get-employee-reviews
     description: Retrieve employee performance reviews
