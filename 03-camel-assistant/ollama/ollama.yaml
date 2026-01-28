@@ -1,0 +1,60 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  labels:
+    app: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+        - name: ollama
+          image: ollama/ollama
+          ports:
+            - containerPort: 11434
+              name: http
+          volumeMounts:
+            - name: ollama
+              mountPath: /.ollama
+          env:
+            - name: OLLAMA_MODELS
+              value: /.ollama/models
+      volumes:
+        - name: ollama
+          persistentVolumeClaim:
+            claimName: ollama
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+  labels:
+    app: ollama
+spec:
+  type: ClusterIP
+  ports:
+    - port: 11434
+      targetPort: 11434
+      protocol: TCP
+      name: http
+  selector:
+    app: ollama

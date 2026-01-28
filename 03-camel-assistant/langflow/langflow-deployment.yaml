@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: langflow
+  labels:
+    app: langflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: langflow
+  template:
+    metadata:
+      labels:
+        app: langflow
+    spec:
+      containers:
+      - name: langflow
+        # 1.6 likely to be broken
+        image: langflowai/langflow:1.6.4
+        ports:
+          - containerPort: 7860
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
+        env:
+          - name: LANGFLOW_DATABASE_URL
+            value: "postgresql://langflow:langflow@postgres:5432/langflow"
+          - name: LANGFLOW_CONFIG_DIR
+            value: "/app/langflow"
+          - name: LANGFLOW_AUTO_LOGIN
+            value: "False"
+          - name: LANGFLOW_SUPERUSER
+            value: "admin"
+          - name: LANGFLOW_PORT
+            value: "7860"
+          - name: LANGFLOW_SUPERUSER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: langflow-secrets
+                key: superuser-password
+          - name: LANGFLOW_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: langflow-secrets
+                key: secret-key
+          - name: LANGFLOW_NEW_USER_IS_ACTIVE
+            value: "True"
+          - name: LANGFLOW_ALEMBIC_LOG_FILE
+            value: "/app/langflow/alembic.log"
+          - name: HOME
+            value: "/app/langflow/home"
+          - name: XDG_CACHE_HOME
+            value: "/app/langflow/home/.cache"
+          - name: DO_NOT_TRACK
+            value: "true"
+        volumeMounts:
+        - name: langflow-data
+          mountPath: /app/langflow
+        - name: tmp-volume
+          mountPath: /tmp
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+      volumes:
+      - name: langflow-data
+        persistentVolumeClaim:
+          claimName: langflow-data-pvc
+      - name: tmp-volume
+        emptyDir: {}
