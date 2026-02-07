@@ -1,0 +1,14 @@
+mcp:
+  tools:
+    - cat-facts-route:
+        route:
+          id: "cat-facts-route"
+        description: "Retrieve random facts about cats"
+        properties:
+          - name: count
+            type: int
+            description: The employee ID to retrieve information for
+            required: true
+            mapping:
+              type: header
+              name: COUNT
