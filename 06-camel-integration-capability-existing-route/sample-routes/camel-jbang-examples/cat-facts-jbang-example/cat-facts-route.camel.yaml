@@ -1,0 +1,13 @@
+- route:
+    id: cat-facts-route
+    from:
+      uri: direct:catFacts
+      steps:
+        - log:
+            message: "Fetching ${header.COUNT} cat facts..."
+        - toD:
+            uri: "https://meowfacts.herokuapp.com/?count=${header.COUNT}"
+        - convertBodyTo:
+            type: String
+        - log:
+            message: "Response: ${body}"
