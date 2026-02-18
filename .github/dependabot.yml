@@ -1,0 +1,38 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/05-camel-integration-capability/employee-backend"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "ai.wanaku*"
+      - dependency-name: "org.apache.camel*"
+
+  - package-ecosystem: "maven"
+    directory: "/06-camel-integration-capability-existing-route/sample-routes"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "ai.wanaku*"
+      - dependency-name: "org.apache.camel*"
+
+  - package-ecosystem: "maven"
+    directory: "/06-code-execution-engine/tax-advisor-agent"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "ai.wanaku*"
+      - dependency-name: "org.apache.camel*"
+
+  - package-ecosystem: "maven"
+    directory: "/06-sample-auth-based-mcp"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "ai.wanaku*"
+      - dependency-name: "org.apache.camel*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
