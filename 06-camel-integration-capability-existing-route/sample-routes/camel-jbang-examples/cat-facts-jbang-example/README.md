@@ -49,7 +49,7 @@ export CLIENT_SECRET=<secret>
 ### Run with Camel JBang
 
 ```bash
-camel run --dep ai.wanaku.sdk:capabilities-runtime-camel-plugin:0.1.0-SNAPSHOT cat-facts-route.camel.yaml
+camel run --dep ai.wanaku.sdk:capabilities-runtime-camel-plugin:0.1.0 cat-facts-route.camel.yaml
 ```
 
 ## MCP Tool

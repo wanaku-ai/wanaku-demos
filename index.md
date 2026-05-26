@@ -7,7 +7,7 @@ hero:
 
   actions:
     - theme: brand
-      text: Gtting Started Guide (Using Docker Compose)
+      text: Getting Started Guide (Using Docker Compose)
       link: ./01-getting-started/README
 
 features:
@@ -20,4 +20,10 @@ features:
   - title: Building a Plain Java Capability for Wanaku
     details: This guide will walk you through creating a simple "echo" capability for Wanaku using Java with the Java Capabilities SDK
     link: ./04-plain-java-services/README
+  - title: Camel Integration Capability
+    details: Run Apache Camel workloads on Wanaku using the Camel Integration Capability
+    link: ./05-camel-integration-capability/README
+  - title: Exposing Existing Camel Routes with Wanaku
+    details: Learn how to expose existing Apache Camel routes as MCP tools via the Wanaku plugin
+    link: ./06-camel-integration-capability-existing-route/sample-routes/camel-core-examples/cat-facts-example/README
 ---
