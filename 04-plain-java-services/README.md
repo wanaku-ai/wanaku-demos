@@ -21,12 +21,12 @@ First, generate a new capability project using the Wanaku SDK's Maven archetype.
 mvn -B archetype:generate \
     -DarchetypeGroupId=ai.wanaku.sdk \
     -DarchetypeArtifactId=capabilities-archetypes-java-tool \
-    -DarchetypeVersion=0.0.7 \
+    -DarchetypeVersion=0.1.0 \
     -DgroupId=net.orpiske \
     -Dpackage=net.orpiske \
     -DartifactId=echo \
     -Dname=EchoService \
-    -Dwanaku-sdk-version=0.0.7
+    -Dwanaku-sdk-version=0.1.0
 ```
 
 > [IMPORTANT]
@@ -82,46 +82,9 @@ public void invokeTool(ToolInvokeRequest request, StreamObserver<ToolInvokeReply
 
 ## 📦 3. Packaging the Application
 
-To package our application into a single, executable JAR file, we need to add the `maven-assembly-plugin` to the `pom.xml`.
+The archetype already includes the `maven-assembly-plugin` configuration, so packaging is straightforward.
 
-Add the following `<build>` section inside the `<project>` tag in your `pom.xml`:
-
-```xml
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <version>3.7.1</version>
-            <configuration>
-                <descriptorRefs>
-                    <descriptorRef>jar-with-dependencies</descriptorRef>
-                </descriptorRefs>
-                <archive>
-                    <manifest>
-                        <mainClass>net.orpiske.App</mainClass>
-                    </manifest>
-                </archive>
-                <finalName>echo-app</finalName>
-                <appendAssemblyId>false</appendAssemblyId>
-            </configuration>
-            <executions>
-                <execution>
-                    <id>make-assembly</id>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>single</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
-```
-
-**Note:** After Wanaku version `0.0.8`, this plugin configuration will be included in the archetype by default, so this step will no longer be necessary.
-
-Now, build the project again to create the executable JAR.
+Build the project to create the executable JAR:
 
 ```shell
 mvn clean package
@@ -145,7 +108,7 @@ Let's launch the service and test it with Wanaku.
 
     ```shell
     # Example using Podman
-    podman run -d -p 8080:8080 quay.io/wanaku/wanaku-router:wanaku-0.0.7
+    podman run -d -p 8080:8080 quay.io/wanaku/wanaku-router-backend:0.1.0
     ```
 
 3.  **Set the Environment Variable** Export the `MCP_ECHO` variable with a test value.
