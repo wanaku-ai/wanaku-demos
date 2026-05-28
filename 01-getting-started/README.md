@@ -7,7 +7,7 @@ data — no containers, no complex setup.
 ## What You Will Need
 
 1. Java 21 or later
-2. An LLM endpoint (can be locally hosted with [Ollama](https://ollama.ai), or a cloud provider)
+2. An agent that supports the Model Context Protocol (MCP). 
 
 ## Step 1: Install the Wanaku CLI
 
@@ -23,7 +23,7 @@ For example, on macOS:
 ```shell
 wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.1/wanaku-cli-0.1.1-osx-aarch_64.zip
 unzip wanaku-cli-0.1.1-osx-aarch_64.zip
-install -m 750 wanaku-cli-0.1.1-osx-aarch_64/bin/wanaku $HOME/bin/wanaku
+install -m 750 wanaku-cli-0.1.1-osx-aarch_64/bin/wanaku-cli $HOME/bin/wanaku-cli
 rm -rf wanaku-cli-0.1.1-osx-aarch_64 wanaku-cli-0.1.1-osx-aarch_64.zip
 ```
 
@@ -78,11 +78,14 @@ agent can look up exchange rates.
 
 ### Option A: Via the Web UI
 
-1. Open <http://localhost:8080/#/tools>
-2. Click **Import Toolset**
-3. Paste the contents of the [currency toolset](https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json)
+1. Open <http://localhost:8080/admin/#/service-catalog>
+2. Click **Toolsets Repositories Tab**
+3. Expand the **wanaku-toolsets** one.
+4. Import the **currency** one.
 
-### Option B: Via the CLI
+### Option B: Via the CLI 
+
+Use this if you prefer to do everything via CLI.
 
 ```shell
 wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json
@@ -97,39 +100,28 @@ wanaku tools list
 Expected output:
 
 ```
-free-currency-conversion-tool => http            => https://economia.awesomeapi.com.br/last/{fromCurrency}-{toCurrency}
+name                          namespace type uri                                                                                                       labels 
+free-currency-conversion-tool default   http https://economia.awesomeapi.com.br/last/{parameter.value('fromCurrency')}-{parameter.value('toCurrency')} {}     
 ```
-
-You can find more toolsets in the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository.
 
 ## Step 5: Connect an AI Agent
 
 Wanaku speaks the [Model Context Protocol](https://modelcontextprotocol.io) (MCP) over HTTP. Any MCP-compatible
-client can connect to it. A few clients we have tested:
+client can connect to it. How you do that will depend on the AI agent you are using. 
 
-* [LibreChat](https://www.librechat.ai/)
-* [HyperChat](https://github.com/BigSweetPotatoStudio/HyperChat)
-* [Witsy](https://github.com/nicbarker/witsy)
+1. [Claude Desktop](https://claude.com/download): you can run Wanaku's command `wanaku configure claude`
+2. [Cursor](https://cursor.com/): you can run Wanaku's command `wanaku configure cursor`
+3. [Claude Code](https://claude.com/product/claude-code): `claude mcp add wanaku --transport sse http://localhost:8080/mcp/sse`
+4. [IBM Bob](https://bob.ibm.com/): details [here](https://bob.ibm.com/docs/shell/configuration/mcp/mcp-bobshell).
+5. For any other client, `http://localhost:8080/mcp/sse` for SSE or `http://localhost:8080/mcp/` for Streamable HTTP.
 
-Point your client's MCP server URL to:
-
-```
-http://localhost:8080/mcp/sse
-```
+## Step 6: Testing
 
 Then ask it a question like:
 
-> What is today's currency conversion rate from 1 euro to dollar?
+> How much is 100 USD in CZK?
 
-Without Wanaku, a typical LLM would answer:
-
-> I don't have real-time access to current market data. You can check online sources.
-
-With Wanaku connected, the agent calls the currency tool and responds with live data:
-
-> Based on the tool call response, today's conversion rate is approximately 1.0374 USD per EUR.
-
-The exact rate will vary — that is the point. Your agent is now using real, live data.
+![Claude call example](claude-call.png)
 
 ## What's Next?
 
