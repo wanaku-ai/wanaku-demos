@@ -128,7 +128,7 @@ Then ask it a question like:
 You now have a working Wanaku instance with a real tool. From here you can:
 
 * Browse the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository for more tools
-* Try the [Camel JBang demo](../02-running-camel-jbang/README.md) to connect custom integrations
+* Follow the [Wanaku on the Cloud](../02-wanaku-on-the-cloud/README.md) guide to deploy on OpenShift with authentication
 * Build your own capability service with the [Java Capabilities SDK](../04-plain-java-services/README.md)
 
 If something does not work, check the logs printed by `wanaku start local` in your terminal.

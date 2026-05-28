@@ -11,9 +11,9 @@ hero:
       link: ./01-getting-started/README
 
 features:
-  - title: Camel JBang
-    details: Connect Wanaku with Custom Camel JBang Tools
-    link: ./02-running-camel-jbang/README
+  - title: Wanaku on the Cloud
+    details: Deploy Wanaku on OpenShift with Keycloak authentication and the Wanaku Operator
+    link: ./02-wanaku-on-the-cloud/README
   - title: Build a powerful AI Agent that knows everything about Apache Camel
     details: Build an Expert AI Agent for Apache Camel with LangFlow & Wanaku (MCP)
     link: ./03-camel-assistant/README
