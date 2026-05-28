@@ -59,14 +59,14 @@ After a few seconds, open <http://localhost:8080> in your browser. You should se
 Use the CLI to verify that the capability services registered with the router:
 
 ```shell
-wanaku targets tools list
+wanaku capabilities list
 ```
 
 You should see output similar to:
 
 ```
-Service                 Target                            Configurations
-http                 => localhost:9000                  =>
+service serviceType  host      port status lastSeen
+http    tool-invoker 127.0.0.1 9000 active Wed, May 28, 2026 at 10:00:00
 ```
 
 This means Wanaku is up and running, and the HTTP capability service is ready to handle tool calls.
