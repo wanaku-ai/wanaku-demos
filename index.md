@@ -7,7 +7,7 @@ hero:
 
   actions:
     - theme: brand
-      text: Getting Started Guide (Using Docker Compose)
+      text: Getting Started Guide
       link: ./01-getting-started/README
 
 features:
