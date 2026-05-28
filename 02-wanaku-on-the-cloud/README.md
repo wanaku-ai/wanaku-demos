@@ -235,7 +235,7 @@ spec:
     authServer: http://<KEYCLOAK_HOST>
     authProxy: "auto"
   router:
-    image: quay.io/wanaku/wanaku-router-backend:latest
+    image: quay.io/wanaku/wanaku-router-backend:0.1.1
     imagePullPolicy: Always
 ```
 
@@ -271,7 +271,7 @@ spec:
   routerRef: wanaku-router
   capabilities:
     - name: wanaku-http
-      image: quay.io/wanaku/wanaku-tool-service-http:latest
+      image: quay.io/wanaku/wanaku-tool-service-http:0.1.1
 ```
 
 Apply it:
