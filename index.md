@@ -11,6 +11,9 @@ hero:
       link: ./1.01-your-first-tool/README
 
 features:
+  - title: "Chapter 2: Introduction to Capabilities"
+    details: Understand how capabilities work in Wanaku — built-in HTTP and Exec, the Camel Integration Capability, and custom extensions
+    link: ./2.01-introduction-to-capabilities/README
   - title: "Chapter 2: Service Catalogs"
     details: Package Apache Camel routes as MCP tools and deploy them to the Wanaku router
     link: ./2.02-service-catalogs/README
