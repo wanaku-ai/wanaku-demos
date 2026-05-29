@@ -23,7 +23,7 @@ For example, on macOS:
 ```shell
 wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.1/wanaku-cli-0.1.1-osx-aarch_64.zip
 unzip wanaku-cli-0.1.1-osx-aarch_64.zip
-install -m 750 wanaku-cli-0.1.1-osx-aarch_64/bin/wanaku-cli $HOME/bin/wanaku-cli
+install -m 750 wanaku-cli-0.1.1-osx-aarch_64/bin/wanaku-cli $HOME/bin/wanaku
 rm -rf wanaku-cli-0.1.1-osx-aarch_64 wanaku-cli-0.1.1-osx-aarch_64.zip
 ```
 
