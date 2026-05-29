@@ -127,7 +127,7 @@ Then ask it a question like:
 
 You now have a working Wanaku instance with a real tool. From here you can:
 
-* Browse the [wanaku-toolsets](https://github.com/wanaku-ai/wanaku-toolsets) repository for more tools
+* Learn how to [manage tools, resources, prompts, and forwards](../1.02-basic-wanaku-operations/README.md)
 * Follow the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide to deploy on OpenShift with authentication
 * Build your own capability service with the [Java Capabilities SDK](../4.01-plain-java-capability/README.md)
 
