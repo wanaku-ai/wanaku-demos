@@ -3,9 +3,6 @@ name: release
 on:
   workflow_dispatch:
     inputs:
-      previousDevelopmentVersion:
-        description: 'The previous development version (without SNAPSHOT)'
-        required: true
       currentDevelopmentVersion:
         description: 'The current development version (without SNAPSHOT)'
         required: true
