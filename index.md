@@ -11,6 +11,9 @@ hero:
       link: ./1.01-your-first-tool/README
 
 features:
+  - title: "Chapter 1: Basic Wanaku Operations"
+    details: Manage tools, resources, prompts, and forwards — the four core MCP primitives
+    link: ./1.02-basic-wanaku-operations/README
   - title: "Chapter 2: Introduction to Capabilities"
     details: Understand how capabilities work in Wanaku — built-in HTTP and Exec, the Camel Integration Capability, and custom extensions
     link: ./2.01-introduction-to-capabilities/README
