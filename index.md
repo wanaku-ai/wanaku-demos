@@ -22,7 +22,7 @@ features:
     link: ./4.01-plain-java-capability/README
   - title: Camel Integration Capability
     details: Run Apache Camel workloads on Wanaku using the Camel Integration Capability
-    link: ./2.01-camel-integration-capability/README
+    link: ./3.02-camel-integration-capability/README
   - title: Exposing Existing Camel Routes with Wanaku
     details: Learn how to expose existing Apache Camel routes as MCP tools via the Wanaku plugin
     link: ./4.02-exposing-existing-routes/sample-routes/camel-core-examples/cat-facts-example/README
