@@ -146,9 +146,7 @@ Give it a name (e.g., `my-weather-service`) and click **Deploy**.
 
 ## What's Next?
 
-- Explore more built-in templates: `wanaku service template list`
-- Read the [Service Templates Guide](https://github.com/wanaku-ai/wanaku/blob/main/docs/service-templates.md)
-- Try deploying Service Catalogs on Kubernetes using the Wanaku Operator
+- **[Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md)** (demo 3.01) — deploy Wanaku on OpenShift with Keycloak authentication and the Wanaku Operator
 
 ## Troubleshooting
 

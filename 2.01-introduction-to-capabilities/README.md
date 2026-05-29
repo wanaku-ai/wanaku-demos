@@ -154,6 +154,4 @@ Chapter 4 covers building custom capabilities from scratch:
 
 ## What's Next?
 
-- **[Service Catalogs](../2.02-service-catalogs/README.md)** — next guide in this chapter; hands-on with creating and deploying Camel routes locally
-- **[Building a Java Capability](../4.01-plain-java-capability/README.md)** — if you want to build custom capabilities from scratch
-- **[Camel Integration Capability](../3.02-camel-integration-capability/README.md)** — deploying the CIC on Kubernetes/OpenShift
+- **[Service Catalogs](../2.02-service-catalogs/README.md)** (demo 2.02) — next guide in this chapter; hands-on with creating and deploying Camel routes locally

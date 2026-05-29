@@ -149,4 +149,6 @@ Let's launch the service and test it with Wanaku.
 
 You can find the complete sample code for this example in the [wanaku-echo-capability-example repository](https://github.com/orpiske/wanaku-echo-capability-example).
 
-Happy coding\!
+## What's Next?
+
+- **[Camel Assistant](../5.01-camel-assistant/README.md)** (demo 5.01) — build an AI assistant backed by Apache Camel documentation and Wanaku tools

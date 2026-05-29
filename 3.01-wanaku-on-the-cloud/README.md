@@ -332,3 +332,7 @@ oc delete wanakurouter/wanaku-router
 helm uninstall wanaku-operator
 oc delete -f keycloak.yaml
 ```
+
+## What's Next?
+
+- **[Camel Integration Capability](../3.02-camel-integration-capability/README.md)** (demo 3.02) — deploy the Camel Integration Capability on Kubernetes/OpenShift to handle routing and transformation

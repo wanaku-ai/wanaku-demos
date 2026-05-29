@@ -294,10 +294,6 @@ These four primitives — tools, resources, prompts, forwards — are the buildi
 
 ## What's Next?
 
-Now that you can manage Wanaku's core primitives, it is time to see them in action:
+Now that you can manage Wanaku's core primitives, it is time to learn about capabilities:
 
-* Create and deploy service catalogs with Apache Camel routes ([demo 2.02](../2.02-service-catalogs/README.md))
-* Explore the Camel Integration Capability for routing and transformation ([demo 3.02](../3.02-camel-integration-capability/README.md))
-* Build your own capability service in plain Java ([demo 4.01](../4.01-plain-java-capability/README.md))
-
-Pick the one that matches your use case and keep building.
+* Introduction to Capabilities ([demo 2.01](../2.01-introduction-to-capabilities/README.md))

@@ -125,11 +125,9 @@ Then ask it a question like:
 
 ## What's Next?
 
-You now have a working Wanaku instance with a real tool. From here you can:
+You now have a working Wanaku instance with a real tool. Next, learn how to manage tools, resources, prompts, and forwards:
 
-* Learn how to [manage tools, resources, prompts, and forwards](../1.02-basic-wanaku-operations/README.md)
-* Follow the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide to deploy on OpenShift with authentication
-* Build your own capability service with the [Java Capabilities SDK](../4.01-plain-java-capability/README.md)
+* [Managing Tools, Resources, Prompts, and Forwards](../1.02-basic-wanaku-operations/README.md) (demo 1.02)
 
 If something does not work, check the logs printed by `wanaku start local` in your terminal.
 

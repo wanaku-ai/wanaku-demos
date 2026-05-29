@@ -338,12 +338,4 @@ route definition.
 
 ## What's Next?
 
-- **Add more routes** — add new routes to the YAML, declare them in the rules file,
-  and re-copy. No code changes, no rebuild.
-- **Use a service catalog** — package routes, rules, and dependencies into a versioned
-  artifact for reproducible deployments.
-- **Try the plugin mode** — if you already have a Camel application, you can embed the
-  CIC as a plugin instead of running it as a separate service. See the
-  [plugin usage guide](https://github.com/wanaku-ai/camel-core-downstream-service/blob/main/docs/plugin-usage.md).
-- **Design routes visually** — use [Kaoto](https://kaoto.io) to build routes in a
-  visual editor and export them as YAML.
+- **[Building a Java Capability](../4.01-plain-java-capability/README.md)** (demo 4.01) — build your own capability service from scratch using Java and the Wanaku Capabilities SDK

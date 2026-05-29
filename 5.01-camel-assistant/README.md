@@ -496,4 +496,4 @@ You now have a working AI assistant backed by Apache Camel documentation, intern
 
 * Add more tools to Wanaku and see the agent pick them up automatically
 * Customize the agent's behavior in the LangFlow UI
-* Try the [Wanaku on the Cloud](../02-wanaku-on-the-cloud/README.md) guide for a standalone router deployment
+* Review the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide for a production deployment with authentication
