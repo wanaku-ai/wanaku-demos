@@ -1,0 +1,7 @@
+rules:
+  - id: get-weather
+    description: Get current weather for the configured location
+    tool:
+      name: get_weather
+      type: direct
+      endpoint: direct:wanaku

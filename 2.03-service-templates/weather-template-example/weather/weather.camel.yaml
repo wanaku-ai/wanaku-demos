@@ -1,0 +1,15 @@
+- route:
+    id: get-weather
+    description: Get current weather for the configured location
+    from:
+      uri: direct:wanaku
+      steps:
+        - setHeader:
+            name: CamelHttpMethod
+            constant: GET
+        - log:
+            message: "Fetching weather for location: {{weather.location}}"
+        - to:
+            uri: "https://api.openweathermap.org/data/2.5/weather?q={{weather.location}}&appid={{weather.api.key}}&units={{weather.units}}"
+        - log:
+            message: "Weather data: ${body}"
