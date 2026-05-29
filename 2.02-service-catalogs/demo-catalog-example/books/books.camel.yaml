@@ -1,0 +1,41 @@
+- route:
+    id: get-book-by-isbn
+    description: Retrieve book information by ISBN
+    from:
+      uri: direct:get-by-isbn
+      steps:
+        - setHeader:
+            name: CamelHttpMethod
+            constant: GET
+        - setHeader:
+            name: isbn
+            expression:
+              simple:
+                expression: "${header.isbn}"
+        - log:
+            message: "Fetching book with ISBN: ${header.isbn}"
+        - to:
+            uri: "https://openlibrary.org/api/books?bibkeys=ISBN:${header.isbn}&format=json&jscmd=data"
+        - log:
+            message: "Book data received: ${body}"
+
+- route:
+    id: search-books
+    description: Search for books by title
+    from:
+      uri: direct:search-books
+      steps:
+        - setHeader:
+            name: CamelHttpMethod
+            constant: GET
+        - setHeader:
+            name: query
+            expression:
+              simple:
+                expression: "${header.query}"
+        - log:
+            message: "Searching for books with query: ${header.query}"
+        - to:
+            uri: "https://openlibrary.org/search.json?q=${header.query}&limit=5"
+        - log:
+            message: "Search results received: ${body}"

@@ -1,0 +1,13 @@
+rules:
+  - id: get-book-by-isbn
+    description: Retrieve book information by ISBN
+    tool:
+      name: get_book_by_isbn
+      type: direct
+      endpoint: direct:get-by-isbn
+  - id: search-books
+    description: Search for books by title
+    tool:
+      name: search_books
+      type: direct
+      endpoint: direct:search-books
