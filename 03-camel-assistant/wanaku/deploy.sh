@@ -1,1 +1,0 @@
-helm install wanaku-operator ./wanaku-operator/deploy/helm/wanaku-operator --namespace camel-assistant --set operatorNamespace=orp-wanaku
