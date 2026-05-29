@@ -11,19 +11,25 @@ hero:
       link: ./1.01-your-first-tool/README
 
 features:
-  - title: Wanaku on the Cloud
+  - title: "Chapter 2: Service Catalogs"
+    details: Package Apache Camel routes as MCP tools and deploy them to the Wanaku router
+    link: ./2.02-service-catalogs/README
+  - title: "Chapter 2: Service Templates"
+    details: Use reusable, parameterized blueprints to create Service Catalogs quickly
+    link: ./2.03-service-templates/README
+  - title: "Chapter 3: Wanaku on the Cloud"
     details: Deploy Wanaku on OpenShift with Keycloak authentication and the Wanaku Operator
     link: ./3.01-wanaku-on-the-cloud/README
-  - title: Build a powerful AI Agent that knows everything about Apache Camel
-    details: Build an Expert AI Agent for Apache Camel with LangFlow & Wanaku (MCP)
-    link: ./5.01-camel-assistant/README
-  - title: Building a Plain Java Capability for Wanaku
-    details: This guide will walk you through creating a simple "echo" capability for Wanaku using Java with the Java Capabilities SDK
-    link: ./4.01-plain-java-capability/README
-  - title: Camel Integration Capability
+  - title: "Chapter 3: Camel Integration Capability"
     details: Run Apache Camel workloads on Wanaku using the Camel Integration Capability
     link: ./3.02-camel-integration-capability/README
-  - title: Exposing Existing Camel Routes with Wanaku
-    details: Learn how to expose existing Apache Camel routes as MCP tools via the Wanaku plugin
+  - title: "Chapter 4: Building a Plain Java Capability"
+    details: Create a simple "echo" capability for Wanaku using the Java Capabilities SDK
+    link: ./4.01-plain-java-capability/README
+  - title: "Chapter 4: Exposing Existing Camel Routes"
+    details: Expose existing Apache Camel routes as MCP tools via the Wanaku plugin
     link: ./4.02-exposing-existing-routes/sample-routes/camel-core-examples/cat-facts-example/README
+  - title: "Chapter 5: Camel Assistant"
+    details: Build an expert AI agent for Apache Camel with LangFlow and Wanaku
+    link: ./5.01-camel-assistant/README
 ---
