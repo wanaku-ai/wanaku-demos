@@ -2,7 +2,7 @@
 
 This guide explains what capabilities are in Wanaku, how they work, and what ships out-of-the-box versus what you can extend.
 
-## What You'll Learn
+## What You Will Learn
 
 - What capabilities are and how they differ from the router
 - The two types of capabilities: tool invokers and resource providers
@@ -14,8 +14,6 @@ This guide explains what capabilities are in Wanaku, how they work, and what shi
 
 - **Wanaku CLI** installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.1))
 - **Wanaku running** via `wanaku start local` (see [Getting Started](../1.01-your-first-tool/README.md))
-
----
 
 ## Step 1: Understanding Capabilities
 
@@ -113,8 +111,8 @@ Use the Camel Integration Capability when you need to:
 
 The CIC is covered in depth in two guides:
 
-- **[Service Catalogs](../2.02-service-catalogs/README.md)** (next guide in this chapter) — hands-on walkthrough of creating and deploying Camel routes locally using `wanaku start local`
-- **[Camel Integration Capability](../3.02-camel-integration-capability/README.md)** — deploying the CIC on Kubernetes/OpenShift for production
+- [Service Catalogs](../2.02-service-catalogs/README.md) (next guide in this chapter) — hands-on walkthrough of creating and deploying Camel routes locally using `wanaku start local`
+- [Camel Integration Capability](../3.02-camel-integration-capability/README.md) — deploying the CIC on Kubernetes/OpenShift for production
 
 ## Step 4: Custom Capabilities and Wanaku Examples
 
@@ -149,9 +147,12 @@ The [wanaku-examples](https://github.com/wanaku-ai/wanaku-examples) repository c
 
 Chapter 4 covers building custom capabilities from scratch:
 
-- **[Building a Java Capability](../4.01-plain-java-capability/README.md)** — step-by-step guide to building a tool invoker capability
-- **[Exposing Existing Camel Routes](../4.02-exposing-existing-routes/README.md)** — wrapping existing Camel routes as capabilities
+- [Building a Java Capability](../4.01-plain-java-capability/README.md) — step-by-step guide to building a tool invoker capability
+- [Exposing Existing Camel Routes](../4.02-exposing-existing-routes/README.md) — wrapping existing Camel routes as capabilities
 
 ## What's Next?
 
-- **[Service Catalogs](../2.02-service-catalogs/README.md)** (demo 2.02) — next guide in this chapter; hands-on with creating and deploying Camel routes locally
+- [Service Catalogs](../2.02-service-catalogs/README.md) (demo 2.02) — next guide in this chapter; hands-on with creating and deploying Camel routes locally
+
+If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
+To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

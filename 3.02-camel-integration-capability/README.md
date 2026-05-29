@@ -9,12 +9,12 @@ By the end, you will have an AI agent that can query an employee management syst
 using tools backed by Camel routes — no custom code in the agent, no hand-written
 API wrappers.
 
-## Prerequisites
+## What You Will Need
 
 - An OpenShift or Kubernetes cluster
-- The [Wanaku Operator](../02-wanaku-on-the-cloud/README.md) installed
+- The [Wanaku Operator](../3.01-wanaku-on-the-cloud/README.md) installed
 - `oc` (or `kubectl`) CLI, logged into your cluster
-- Keycloak deployed and configured (see the [cloud guide](../02-wanaku-on-the-cloud/README.md))
+- Keycloak deployed and configured (see the [cloud guide](../3.01-wanaku-on-the-cloud/README.md))
 
 ## What Is the Camel Integration Capability?
 
@@ -208,7 +208,7 @@ information, reviews, and compensation. It's a stand-in for the kind of internal
 API you'd have in an actual enterprise environment. First, build and push the
 container image:
 
-```bash
+```shell
 cd employee-backend
 mvn -B clean package \
     -Dquarkus.container-image.build=true \
@@ -220,7 +220,7 @@ Replace `<your-registry>` with your container registry (e.g., `quay.io/your-user
 
 Then deploy it to the cluster:
 
-```bash
+```shell
 oc apply -f employee-system/openshift-deployment.yaml
 ```
 
@@ -232,7 +232,7 @@ This creates:
 
 Wait for the backend to be ready:
 
-```bash
+```shell
 oc wait --for=condition=ready pod -l app=employee-backend --timeout=120s
 ```
 
@@ -240,7 +240,7 @@ oc wait --for=condition=ready pod -l app=employee-backend --timeout=120s
 
 Apply the Wanaku custom resource that includes the CIC:
 
-```bash
+```shell
 oc apply -f employee-system/wanaku-demo-employee-system.yaml
 ```
 
@@ -276,7 +276,7 @@ routes and rules files into the pod manually — in production, you'd use a serv
 catalog or mount them from a ConfigMap, but this approach lets you iterate on the
 files without rebuilding the container.
 
-```bash
+```shell
 cd employee-system
 ./copy-files.sh
 ```
@@ -298,7 +298,7 @@ registers the tools with the Wanaku Router.
 
 Check that the tools are registered:
 
-```bash
+```shell
 wanaku tools list --host $WANAKU_HOST
 ```
 
@@ -307,7 +307,7 @@ You should see three tools: `get-employee-information`, `get-employee-reviews`, 
 
 Check that the CIC registered as a capability:
 
-```bash
+```shell
 wanaku capabilities list --host $WANAKU_HOST
 ```
 
@@ -338,4 +338,7 @@ route definition.
 
 ## What's Next?
 
-- **[Building a Java Capability](../4.01-plain-java-capability/README.md)** (demo 4.01) — build your own capability service from scratch using Java and the Wanaku Capabilities SDK
+- [Building a Java Capability](../4.01-plain-java-capability/README.md) (demo 4.01) — build your own capability service from scratch using Java and the Wanaku Capabilities SDK
+
+If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
+To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

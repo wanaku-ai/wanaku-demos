@@ -2,13 +2,13 @@
 
 This demo walks you through creating and deploying a Service Catalog — a way to package Apache Camel routes as tools that AI agents can use through Wanaku.
 
-## What You'll Learn
+## What You Will Learn
 
 - How to create a Service Catalog with Apache Camel routes
 - How to expose Camel routes as MCP tools
 - How to deploy a Service Catalog to the Wanaku router
 
-## Prerequisites
+## What You Will Need
 
 - **Wanaku CLI** installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.1))
 - **Wanaku running** via `wanaku start local` (see [Getting Started](../1.01-your-first-tool/README.md))
@@ -40,8 +40,6 @@ This demo walks you through creating and deploying a Service Catalog — a way t
 │  Database, etc) │
 └─────────────────┘
 ```
-
----
 
 ## Step 1: Initialize a Service Catalog
 

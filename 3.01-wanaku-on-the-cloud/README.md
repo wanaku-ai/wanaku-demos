@@ -29,7 +29,7 @@ This guide walks you through deploying Wanaku on OpenShift (or Kubernetes) in a 
     └─────────────────────┘
 ```
 
-## Prerequisites
+## What You Will Need
 
 - `oc` (or `kubectl`) CLI, logged into your cluster
 - `helm` v3+
@@ -40,13 +40,13 @@ This guide walks you through deploying Wanaku on OpenShift (or Kubernetes) in a 
 
 Create a dedicated namespace for the demo:
 
-```bash
+```shell
 oc new-project wanaku-demo
 ```
 
 Or, if the namespace already exists:
 
-```bash
+```shell
 oc project wanaku-demo
 ```
 
@@ -143,7 +143,7 @@ spec:
 
 Apply it:
 
-```bash
+```shell
 oc apply -f keycloak.yaml
 ```
 
@@ -151,13 +151,13 @@ This deploys Keycloak with a persistent volume, a `ClusterIP` service, and an Op
 
 Wait for Keycloak to be ready:
 
-```bash
+```shell
 oc wait --for=condition=ready pod -l app=keycloak --timeout=300s
 ```
 
 Verify Keycloak is running:
 
-```bash
+```shell
 oc get pods -l app=keycloak
 ```
 
@@ -165,7 +165,7 @@ oc get pods -l app=keycloak
 
 Once Keycloak is ready, download the Wanaku realm configuration and use the Wanaku CLI to create the realm:
 
-```bash
+```shell
 curl -sLO https://raw.githubusercontent.com/wanaku-ai/wanaku/wanaku-0.1.1/deploy/auth/wanaku-config.json
 
 KEYCLOAK_HOST=$(oc get route keycloak -o jsonpath='{.spec.host}')
@@ -180,7 +180,7 @@ wanaku admin realm create \
 
 Then, retrieve the OIDC client secret:
 
-```bash
+```shell
 OIDC_SECRET=$(WANAKU_ADMIN_USERNAME=admin WANAKU_ADMIN_PASSWORD=admin \
   wanaku admin credentials show \
   --keycloak-url "http://${KEYCLOAK_HOST}" \
@@ -196,7 +196,7 @@ Save this secret — you will need it for the router and capability specs.
 
 First, download the Helm chart from the Wanaku repository:
 
-```bash
+```shell
 curl -sL https://github.com/wanaku-ai/wanaku/archive/refs/tags/wanaku-0.1.1.tar.gz | \
   tar xz --strip-components=4 wanaku-wanaku-0.1.1/apps/wanaku-operator/deploy/helm/wanaku-operator
 ```
@@ -205,7 +205,7 @@ This extracts the `wanaku-operator` Helm chart into the current directory.
 
 Then, install the operator:
 
-```bash
+```shell
 NAMESPACE=$(oc project -q)
 helm install wanaku-operator \
   ./wanaku-operator \
@@ -215,7 +215,7 @@ helm install wanaku-operator \
 
 Wait for it to become available:
 
-```bash
+```shell
 oc wait deployment/wanaku-operator \
   --for=condition=Available \
   --timeout=120s
@@ -241,13 +241,13 @@ spec:
 
 Apply it:
 
-```bash
+```shell
 oc apply -f wanaku-router.yaml
 ```
 
 Wait for the router to be ready:
 
-```bash
+```shell
 oc wait wanakurouter/wanaku-router \
   --for=condition=Ready \
   --timeout=120s
@@ -276,13 +276,13 @@ spec:
 
 Apply it:
 
-```bash
+```shell
 oc apply -f wanaku-http-capability.yaml
 ```
 
 Wait for it to be ready:
 
-```bash
+```shell
 oc wait wanakucapabilities/wanaku-http-capability \
   --for=condition=Ready \
   --timeout=120s
@@ -292,13 +292,13 @@ oc wait wanakucapabilities/wanaku-http-capability \
 
 Get the Wanaku Router host:
 
-```bash
+```shell
 export WANAKU_HOST="http://$(oc get route wanaku-router -o jsonpath='{.spec.host}')"
 ```
 
 List available tools, resources, and capabilities:
 
-```bash
+```shell
 wanaku tools list --host $WANAKU_HOST
 wanaku resources list --host $WANAKU_HOST
 wanaku capabilities list --host $WANAKU_HOST
@@ -306,7 +306,7 @@ wanaku capabilities list --host $WANAKU_HOST
 
 Add a sample HTTP tool and test it:
 
-```bash
+```shell
 wanaku tools add --host $WANAKU_HOST \
   -n "meow-facts" \
   --description "Retrieve random facts about cats" \
@@ -318,7 +318,7 @@ wanaku tools add --host $WANAKU_HOST \
 
 Inspect MCP traffic:
 
-```bash
+```shell
 npx @modelcontextprotocol/inspector
 ```
 
@@ -326,7 +326,7 @@ npx @modelcontextprotocol/inspector
 
 Remove resources in reverse order:
 
-```bash
+```shell
 oc delete wanakucapabilities/wanaku-http-capability
 oc delete wanakurouter/wanaku-router
 helm uninstall wanaku-operator
@@ -335,4 +335,7 @@ oc delete -f keycloak.yaml
 
 ## What's Next?
 
-- **[Camel Integration Capability](../3.02-camel-integration-capability/README.md)** (demo 3.02) — deploy the Camel Integration Capability on Kubernetes/OpenShift to handle routing and transformation
+- [Camel Integration Capability](../3.02-camel-integration-capability/README.md) (demo 3.02) — deploy the Camel Integration Capability on Kubernetes/OpenShift to handle routing and transformation
+
+If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
+To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

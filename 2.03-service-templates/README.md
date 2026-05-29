@@ -2,10 +2,10 @@
 
 Service Templates are reusable, parameterized blueprints for creating Service Catalogs. Instead of writing Camel routes from scratch, you pick a template, fill in the parameters, and deploy. This demo shows how to use built-in templates and create your own.
 
-> **Prerequisite:** Make sure Wanaku is running via `wanaku start local` and you are familiar with
-> [Service Catalogs](../2.02-service-catalogs/README.md).
+## What You Will Need
 
----
+- **Wanaku running** via `wanaku start local`
+- Familiarity with [Service Catalogs](../2.02-service-catalogs/README.md)
 
 ## Part 1: Using a Built-in Template
 
@@ -50,8 +50,6 @@ You should see a `kafka_request_reply` tool (or similar, depending on the templa
 
 > **Note:** Actually testing the Kafka tool requires a running Kafka broker. The
 > `start-local-kafka.sh` script in this directory can help you start one quickly.
-
----
 
 ## Part 2: Creating a Custom Template
 
@@ -142,11 +140,9 @@ Give it a name (e.g., `my-weather-service`) and click **Deploy**.
 
 > **Note:** You'll need a free API key from [OpenWeatherMap](https://openweathermap.org/api) to use this template.
 
----
-
 ## What's Next?
 
-- **[Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md)** (demo 3.01) — deploy Wanaku on OpenShift with Keycloak authentication and the Wanaku Operator
+- [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) (demo 3.01) — deploy Wanaku on OpenShift with Keycloak authentication and the Wanaku Operator
 
 ## Troubleshooting
 

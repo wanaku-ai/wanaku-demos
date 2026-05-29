@@ -2,7 +2,7 @@
 
 This guide walks you through deploying a specialized Apache Camel assistant on OpenShift. It uses Retrieval-Augmented Generation (RAG) backed by a Camel dataset, Wanaku MCP Router as the tool provider, and LangFlow as the visual AI designer.
 
-## Prerequisites
+## What You Will Need
 
 Ensure you have:
 
@@ -12,7 +12,7 @@ Ensure you have:
 - **[Wanaku CLI](https://github.com/wanaku-ai/wanaku/releases/)** installed
 - **[Hugging Face CLI](https://www.perplexity.ai/search/451721bf-3b96-4799-b488-4584c682653c)** for downloading training data
 
-## 1\. Create the Namespace
+## Step 1: Create the Namespace
 
 Create a dedicated namespace for this demo:
 
@@ -20,7 +20,7 @@ Create a dedicated namespace for this demo:
 oc new-project camel-assistant
 ```
 
-## 2\. Deploy Ollama on OpenShift
+## Step 2: Deploy Ollama on OpenShift
 
 Ollama serves the embedding model that turns the Apache Camel dataset into vectors the AI can search.
 
@@ -44,7 +44,7 @@ Once the pod is running, pull the `nomic-embed-text:latest` model:
 oc exec deploy/ollama -n camel-assistant -- ollama pull nomic-embed-text:latest
 ```
 
-## 3\. Configure the Data Loader System
+## Step 3: Configure the Data Loader System
 
 Download and extract the data loader CLI:
 
@@ -54,15 +54,13 @@ Verify the tool is working:
 
 #### **Linux & macOS**
 
-```bash
+```shell
 # Navigate to the directory
 cd camel-data-loader-cli-1.1.0
 
 # Make the script executable
 ./camel-data-loader-cli --help
 ```
-
------
 
 #### **Windows**
 
@@ -74,9 +72,7 @@ cd camel-data-loader-cli-1.1.0
 .\camel-data-loader-cli.bat --help
 ```
 
------
-
-## 4\. Deploy Qdrant (Vector Database)
+## Step 4: Deploy Qdrant (Vector Database)
 
 Deploy the Qdrant vector database to store the embeddings.
 
@@ -97,7 +93,7 @@ QDRANT_ROUTE=$(oc get route qdrant -n camel-assistant -o jsonpath='{.spec.host}'
 echo "Qdrant URL: http://${QDRANT_ROUTE}"
 ```
 
-## 5\. Download the Training Data
+## Step 5: Download the Training Data
 
 Download the [Camel Components dataset](https://huggingface.co/datasets/megacamelus/camel-components). This dataset contains Apache Camel documentation that will be loaded into Qdrant to provide additional context to the AI agent.
 
@@ -109,7 +105,7 @@ This step requires the **Hugging Face CLI**. If you don't have it installed, you
 pip install -U "huggingface_hub[cli]"
 ```
 
-> [NOTE]
+> [!NOTE]
 > You can find additional details about downloading datasets in these guides
 > - How to install the [Hugging Face CLI](https://www.perplexity.ai/search/451721bf-3b96-4799-b488-4584c682653c)
 > - [Datasets Downloading](https://huggingface.co/docs/hub/en/datasets-downloading)
@@ -122,11 +118,11 @@ Once the CLI is ready, run the following command to download the dataset. It wil
 huggingface-cli download --repo-type dataset --local-dir camel-components megacamelus/camel-components
 ```
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > HuggingFace may limit the number of requests from non-authenticated accounts, which may cause the download to be very slow
 > and/or fail at times. In this case, you can either try again after a while or authenticate.
 
-## 6\. Load the Camel Data Set
+## Step 6: Load the Camel Data Set
 
 Load the downloaded dataset into Qdrant using the `camel-data-loader-cli`.
 
@@ -184,7 +180,7 @@ curl --silent -X POST http://${QDRANT_ROUTE}/collections/camel/points/scroll \
 
 If successful, you will see a JSON object containing the `points` you just loaded into the system.
 
-## 7\. Launch Wanaku
+## Step 7: Launch Wanaku
 
 With the data loaded, the next step is to launch the Wanaku MCP Router. This is a critical integration service that acts as a secure gateway between AI agents and your enterprise systems.
 
@@ -251,15 +247,13 @@ oc wait deployment/wanaku-operator \
   --namespace camel-assistant
 ```
 
-## 8\. Add Tools to Wanaku
+## Step 8: Add Tools to Wanaku
 
 Add a DuckDuckGo search tool so the agent can look up information on the internet.
 
 ```shell
 wanaku tools add --name "duckduckgo-search" --description "Search on the internet using DuckDuckGo" --uri "duckduckgo://search" --type duckduckgo
 ```
-
------
 
 ### Verify the Tool was Added
 
@@ -284,7 +278,7 @@ echo "Wanaku UI: http://${WANAKU_ROUTE}/#/tools"
 ```
 
 
-## 9\. Launch MCP Servers (Camel Catalog)
+## Step 9: Launch MCP Servers (Camel Catalog)
 
 The Camel Catalog MCP server provides tools for querying Apache Camel components, data formats, and languages.
 
@@ -295,15 +289,13 @@ oc apply -f mcp-servers/camel-catalog-deployment.yaml -n camel-assistant
 oc wait --for=condition=ready pod -l app=camel-catalog-mcp -n camel-assistant --timeout=300s
 ```
 
-## 10\. Connect the Camel Catalog Tools
+## Step 10: Connect the Camel Catalog Tools
 
 Forward the Camel Catalog tools into Wanaku so it can expose them to AI agents:
 
 ```shell
 wanaku forwards add --name camel-catalog-mcp --service=http://camel-catalog-mcp.camel-assistant.svc.cluster.local:8010/mcp/sse
 ```
-
------
 
 ### Verify All Tools
 
@@ -325,11 +317,9 @@ getInformationAboutComponentOptions   mcp-remote-tool   <remote>
 ...and several others
 ```
 
-## 11\. Launch the LangFlow Visual UI
+## Step 11: Launch the LangFlow Visual UI
 
 [LangFlow](https://www.langflow.org/) is a visual platform for building AI workflows. This is where you'll connect the tools and services you've configured.
-
------
 
 ### Start the LangFlow Service
 
@@ -345,8 +335,6 @@ oc apply -f langflow/langflow-service.yaml -n camel-assistant
 oc wait --for=condition=ready pod -l app=langflow -n camel-assistant --timeout=300s
 ```
 
------
-
 ### Get the LangFlow URL
 
 ```shell
@@ -360,7 +348,7 @@ echo "LangFlow URL: http://${LANGFLOW_ROUTE}"
 2.  Click the button to **create your first workflow**.
 3.  In the dialog that appears, select **"Blank Flow"** to get started.
 
-## 12\. Configure the Camel Assistant Agent
+## Step 12: Configure the Camel Assistant Agent
 
 Upload and configure the pre-built AI agent that uses the Wanaku router and the tools you've set up.
 
@@ -494,6 +482,9 @@ oc delete project camel-assistant
 
 You now have a working AI assistant backed by Apache Camel documentation, internet search, and Camel Catalog tools. From here you can:
 
-* Add more tools to Wanaku and see the agent pick them up automatically
-* Customize the agent's behavior in the LangFlow UI
-* Review the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide for a production deployment with authentication
+- Add more tools to Wanaku and see the agent pick them up automatically
+- Customize the agent's behavior in the LangFlow UI
+- Review the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide for a production deployment with authentication
+
+If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
+To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

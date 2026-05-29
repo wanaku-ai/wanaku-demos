@@ -11,7 +11,7 @@ You have Wanaku running. You imported your first tool. Now what? This guide walk
 * How to create and edit prompt templates with typed arguments
 * How to aggregate external MCP servers through forwards
 
-## Prerequisites
+## What You Will Need
 
 You must have completed [demo 1.01](../1.01-your-first-tool/README.md). That means:
 
@@ -296,4 +296,7 @@ These four primitives — tools, resources, prompts, forwards — are the buildi
 
 Now that you can manage Wanaku's core primitives, it is time to learn about capabilities:
 
-* Introduction to Capabilities ([demo 2.01](../2.01-introduction-to-capabilities/README.md))
+- [Introduction to Capabilities](../2.01-introduction-to-capabilities/README.md) (demo 2.01)
+
+If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
+To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

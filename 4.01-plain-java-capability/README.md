@@ -5,15 +5,13 @@ This guide will walk you through creating a simple "echo" capability for Wanaku 
 This service will read the value of an environment variable and return it, demonstrating the basic principles of the 
 [Wanaku Capabilities SDK](https://github.com/wanaku-ai/wanaku-capabilities-java-sdk).
 
-### Prerequisites
+## What You Will Need
 
 * Java Development Kit (JDK)
 * Apache Maven
 * An IDE of your choice (e.g., VS Code, IntelliJ IDEA)
 
------
-
-## 🛠️ 1. Project Setup
+## Step 1: Project Setup
 
 First, generate a new capability project using the Wanaku SDK's Maven archetype. This command creates a complete project structure for you.
 
@@ -29,7 +27,7 @@ mvn -B archetype:generate \
     -Dwanaku-sdk-version=0.1.0
 ```
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > Make sure the `DarchetypeVersion` and `Dwanaku-sdk-version` match the version of Wanaku you are using.
 
 Once the project is created, run an initial build to compile the code and download dependencies.
@@ -38,9 +36,7 @@ Once the project is created, run an initial build to compile the code and downlo
 mvn clean package
 ```
 
------
-
-## 💻 2. Implementing the Capability Logic
+## Step 2: Implementing the Capability Logic
 
 Now, let's write the Java code for our echo service. We only need to modify two files.
 
@@ -78,9 +74,7 @@ public void invokeTool(ToolInvokeRequest request, StreamObserver<ToolInvokeReply
 }
 ```
 
------
-
-## 📦 3. Packaging the Application
+## Step 3: Packaging the Application
 
 The archetype already includes the `maven-assembly-plugin` configuration, so packaging is straightforward.
 
@@ -92,9 +86,7 @@ mvn clean package
 
 You should now find the final artifact at `target/echo-app.jar`.
 
------
-
-## 🚀 4. Running and Verifying the Capability
+## Step 4: Running and Verifying the Capability
 
 Let's launch the service and test it with Wanaku.
 
@@ -151,4 +143,7 @@ You can find the complete sample code for this example in the [wanaku-echo-capab
 
 ## What's Next?
 
-- **[Camel Assistant](../5.01-camel-assistant/README.md)** (demo 5.01) — build an AI assistant backed by Apache Camel documentation and Wanaku tools
+- [Camel Assistant](../5.01-camel-assistant/README.md) (demo 5.01) — build an AI assistant backed by Apache Camel documentation and Wanaku tools
+
+If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
+To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).
