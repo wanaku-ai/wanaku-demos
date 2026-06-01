@@ -125,8 +125,7 @@ Generate the Wanaku rules from the route IDs:
 wanaku service expose --path=demo-catalog
 ```
 
-This scans the Camel routes and generates `books/books.wanaku-rules.yaml`. Edit that file so it
-includes the `wanaku_body` property for each tool:
+This scans the Camel routes and generates `books/books.wanaku-rules.yaml`:
 
 ```yaml
 # Auto-generated Wanaku rules for books
@@ -152,11 +151,6 @@ mcp:
             description: The greeting message to send
             required: true
 ```
-
-> [!NOTE]
-> This manual edit is only needed in version 0.1.1 due to a
-> [known issue](https://github.com/wanaku-ai/wanaku/issues/1234). Future versions will generate
-> the `wanaku_body` property automatically.
 
 ## Step 5: Deploy the Service Catalog
 
