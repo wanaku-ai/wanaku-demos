@@ -9,38 +9,29 @@ Service Templates are reusable, parameterized blueprints for creating Service Ca
 
 ## Part 1: Using a Built-in Template
 
-### Step 1: Browse Available Templates
+### Step 1: List Available Templates
 
-Open the Wanaku Admin UI at <http://localhost:8080/admin/#/service-catalog> and click the
-**Service Templates** tab. You should see templates like:
+```shell
+wanaku service template list
+```
 
-- `kafka-tool`
-- `jms-tool`
-- `github-pullrequest-source-tool`
-- `mail-sink-tool`
-- `rabbitmq-tool`
+You should see templates like `kafka-tool`, `jms-tool`, `github-pullrequest-source-tool`,
+`mail-sink-tool`, `rabbitmq-tool`, among others. Each entry shows the template name, description,
+and the properties it requires.
 
-### Step 2: View Template Details
+### Step 2: Instantiate the Template
 
-Click on the **kafka-tool** template to expand it. You will see its description and the list of
-required properties (broker address, topics, timeout, etc.).
+Instantiate the `kafka-tool` template, passing the required properties as comma-separated
+key=value pairs:
 
-### Step 3: Instantiate the Template
+```shell
+wanaku service template instantiate --name=kafka-tool \
+  --properties=kafka.brokers=localhost:9092,kafka.request.topic=ai.requests,kafka.response.topic=ai.responses,kafka.reply.timeout-ms=30000,kafka.response.group-id=wanaku-demo-group
+```
 
-Click **Instantiate** on the `kafka-tool` template. Fill in the properties:
+The instantiated catalog is automatically deployed to the router.
 
-| Property                       | Value                  |
-|--------------------------------|------------------------|
-| `kafka.brokers`                | `localhost:9092`       |
-| `kafka.request.topic`         | `ai.requests`          |
-| `kafka.response.topic`        | `ai.responses`         |
-| `kafka.reply.timeout-ms`      | `30000`                |
-| `kafka.response.group-id`     | `wanaku-demo-group`    |
-
-Give it a name (e.g., `kafka-demo`) and click **Deploy**. The instantiated catalog is automatically
-deployed.
-
-### Step 4: Verify
+### Step 3: Verify
 
 ```shell
 wanaku tools list | grep kafka
@@ -127,18 +118,15 @@ wanaku service template deploy --file=weather-template.zip --host=http://localho
 
 ### Step 7: Instantiate Your Template
 
-Open the **Service Templates** tab in the Admin UI at <http://localhost:8080/admin/#/service-catalog>.
-Find `weather-template`, click **Instantiate**, and fill in the properties:
+Instantiate the template you just deployed, providing the required property values:
 
-| Property              | Value                        |
-|-----------------------|------------------------------|
-| `weather.api.key`     | Your OpenWeatherMap API key  |
-| `weather.location`    | `New York`                   |
-| `weather.units`       | `metric`                     |
-
-Give it a name (e.g., `my-weather-service`) and click **Deploy**.
+```shell
+wanaku service template instantiate --name=weather-template \
+  --properties=weather.api.key=YOUR_API_KEY,weather.location=New\ York,weather.units=metric
+```
 
 > **Note:** You'll need a free API key from [OpenWeatherMap](https://openweathermap.org/api) to use this template.
+> Replace `YOUR_API_KEY` with your actual key.
 
 ## What's Next?
 
@@ -149,7 +137,7 @@ Give it a name (e.g., `my-weather-service`) and click **Deploy**.
 ### Template instantiation fails with "missing property"
 
 - Double-check property names match exactly (case-sensitive)
-- Ensure all required properties are provided via `--property` flags
+- Ensure all required properties are provided via the `--properties` flag
 - Check the template's `service.properties` file for required placeholders
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
