@@ -11,25 +11,42 @@ data — no containers, no complex setup.
 
 ## Step 1: Install the Wanaku CLI
 
-Download the CLI from the [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.1).
+The CLI ships as **native binaries** for Linux (x86_64) and macOS (AArch64), or as a **Java-based archive**
+that runs on any OS with Java 21+. Pick the tab that matches your system:
 
-The CLI ships in two flavors:
+::: code-group
 
-* **Native binaries** for Linux (x86_64) and macOS (AArch64) — no Java required
-* **Java-based archive** that runs on any OS with Java 21+
-
-For example, on macOS:
-
-```shell
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.1/wanaku-cli-0.1.1-osx-aarch_64.zip
-unzip wanaku-cli-0.1.1-osx-aarch_64.zip
-install -m 750 wanaku-cli-0.1.1-osx-aarch_64/bin/wanaku-cli $HOME/bin/wanaku
-rm -rf wanaku-cli-0.1.1-osx-aarch_64 wanaku-cli-0.1.1-osx-aarch_64.zip
+```shell [Quick Install]
+curl -sSL https://wanaku.ai/get-wanaku.sh | bash
 ```
 
-> [!NOTE]
-> Adjust the file name for your OS. On Linux, use the `linux-x86_64` variant. If you prefer the
-> Java-based archive, download `wanaku-cli-0.1.1.zip` instead.
+```shell [macOS (AArch64)]
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.3/wanaku-cli-0.1.3-osx-aarch_64.zip
+unzip wanaku-cli-0.1.3-osx-aarch_64.zip
+install -m 750 wanaku-cli-0.1.3-osx-aarch_64/bin/wanaku wanaku-cli-0.1.3-osx-aarch_64/bin/wanaku-cli $HOME/bin/
+rm -rf wanaku-cli-0.1.3-osx-aarch_64 wanaku-cli-0.1.3-osx-aarch_64.zip
+```
+
+```shell [Linux (x86_64)]
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.3/wanaku-cli-0.1.3-linux-x86_64.zip
+unzip wanaku-cli-0.1.3-linux-x86_64.zip
+install -m 750 wanaku-cli-0.1.3-linux-x86_64/bin/wanaku wanaku-cli-0.1.3-linux-x86_64/bin/wanaku-cli $HOME/bin/
+rm -rf wanaku-cli-0.1.3-linux-x86_64 wanaku-cli-0.1.3-linux-x86_64.zip
+```
+
+```shell [Windows / Other]
+# Requires Java 21+
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.3/wanaku-cli-0.1.3.zip
+unzip wanaku-cli-0.1.3.zip
+# Add the extracted bin/ directory to your PATH
+```
+
+:::
+
+> [!TIP]
+> The **Quick Install** script auto-detects your OS and architecture, downloads the latest release,
+> verifies the checksum, and installs to `$HOME/bin`. You can override the install directory with
+> `WANAKU_INSTALL_DIR=/usr/local/bin`.
 
 Verify the installation:
 
