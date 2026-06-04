@@ -21,17 +21,49 @@ and the properties it requires.
 
 ### Step 2: Instantiate the Template
 
-Instantiate the `kafka-tool` template, passing the required properties as comma-separated
-key=value pairs:
+Instantiate the `kafka-tool` template, passing the required properties:
 
 ```shell
 wanaku service template instantiate --name=kafka-tool \
-  --properties=kafka.brokers=localhost:9092,kafka.request.topic=ai.requests,kafka.response.topic=ai.responses,kafka.reply.timeout-ms=30000,kafka.response.group-id=wanaku-demo-group
+  --property=kafka.brokers=localhost:9092 \
+  --property=kafka.request.topic=ai.requests \
+  --property=kafka.response.topic=ai.responses \
+  --property=kafka.reply.timeout-ms=30000 \
+  --property=kafka.response.group-id=wanaku-demo-group
 ```
 
-The instantiated catalog is automatically deployed to the router.
+### Step 3: Deploy the Instantiated Catalog
 
-### Step 3: Verify
+Get the deployment instructions for the instantiated catalog:
+
+```shell
+wanaku service instructions --name kafka-tool --model local
+```
+
+This prints the command to launch the Camel Integration Capability. The output looks like:
+
+```text
+Deployment instructions for 'kafka-tool' (camel-integration-capability, local)
+
+
+--- System: kafka ---
+
+java -jar camel-integration-capability-main-*-jar-with-dependencies.jar \
+--registration-url <registration-url> \
+--registration-announce-address localhost \
+--grpc-port <grpc-port> \
+--name kafka \
+--service-catalog kafka-tool \
+--service-catalog-system kafka \
+--client-id wanaku-service \
+--fail-fast
+```
+
+Run that command in a separate terminal, filling in the placeholders. See the
+[Introduction to Capabilities](../2.01-introduction-to-capabilities/README.md) guide for
+details on downloading and running the Camel Integration Capability.
+
+### Step 4: Verify
 
 ```shell
 wanaku tools list | grep kafka
@@ -122,7 +154,9 @@ Instantiate the template you just deployed, providing the required property valu
 
 ```shell
 wanaku service template instantiate --name=weather-template \
-  --properties=weather.api.key=YOUR_API_KEY,weather.location=New\ York,weather.units=metric
+  --property=weather.api.key=YOUR_API_KEY \
+  --property=weather.location="New York" \
+  --property=weather.units=metric
 ```
 
 > **Note:** You'll need a free API key from [OpenWeatherMap](https://openweathermap.org/api) to use this template.
@@ -137,7 +171,7 @@ wanaku service template instantiate --name=weather-template \
 ### Template instantiation fails with "missing property"
 
 - Double-check property names match exactly (case-sensitive)
-- Ensure all required properties are provided via the `--properties` flag
+- Ensure all required properties are provided via `--property` flags
 - Check the template's `service.properties` file for required placeholders
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
