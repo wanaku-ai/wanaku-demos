@@ -6,18 +6,18 @@ You have Wanaku running. You imported your first tool. Now what? This guide walk
 
 ## What You Will Learn
 
-* How to manage tools manually and generate them from OpenAPI specs
-* How to expose files and data sources as resources
-* How to create and edit prompt templates with typed arguments
-* How to aggregate external MCP servers through forwards
+- How to manage tools manually and generate them from OpenAPI specs
+- How to expose files and data sources as resources
+- How to create and edit prompt templates with typed arguments
+- How to aggregate external MCP servers through forwards
 
 ## What You Will Need
 
 You must have completed [demo 1.01](../1.01-your-first-tool/README.md). That means:
 
-* Wanaku CLI is installed
-* `wanaku start local` is running
-* You have imported at least one tool
+- Wanaku CLI is installed
+- `wanaku start local` is running
+- You have imported at least one tool
 
 Keep Wanaku running in a terminal. The commands below assume it is available at `http://localhost:8080`.
 
@@ -39,10 +39,10 @@ wanaku tools add -n "get-weather" \
 ```
 
 This registers a tool with:
-* **Name**: `get-weather`
-* **Type**: `http` (handled by the HTTP capability service)
-* **URI**: the API endpoint
-* **Property**: one required string parameter `q` (the city name)
+- **Name**: `get-weather`
+- **Type**: `http` (handled by the HTTP capability service)
+- **URI**: the API endpoint
+- **Property**: one required string parameter `q` (the city name)
 
 > [!NOTE]
 > For this example to work with a live API, you would typically need an API key. The syntax above shows the mechanics — swap in an API you have access to, or just use it to understand the structure.
@@ -186,10 +186,10 @@ wanaku prompts add \
 
 Breaking this down:
 
-* **Name**: `code-review`
-* **Description**: What the prompt does
-* **Message**: The prompt template. `{{code}}` is a placeholder that gets replaced with the actual argument value.
-* **Argument**: Declares a required string argument called `code`
+- **Name**: `code-review`
+- **Description**: What the prompt does
+- **Message**: The prompt template. `{{code}}` is a placeholder that gets replaced with the actual argument value.
+- **Argument**: Declares a required string argument called `code`
 
 The syntax for `--argument` is: `<name>:<description>:<required>`.  
 The syntax for `--message` is: `<role>:<content-type>:<text>`.
@@ -285,10 +285,10 @@ Tools and resources from that server are removed from the catalog immediately.
 
 You now know how to:
 
-* Add, list, inspect, and remove **tools** — both manually and from OpenAPI specs
-* Expose files and data as **resources** for AI agents to read
-* Create reusable **prompts** with typed arguments
-* Aggregate external MCP servers using **forwards**
+- Add, list, inspect, and remove **tools** — both manually and from OpenAPI specs
+- Expose files and data as **resources** for AI agents to read
+- Create reusable **prompts** with typed arguments
+- Aggregate external MCP servers using **forwards**
 
 These four primitives — tools, resources, prompts, forwards — are the building blocks of Wanaku. Mastering them means you can quickly assemble a rich capability catalog for any AI agent.
 
