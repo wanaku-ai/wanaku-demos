@@ -51,7 +51,7 @@ Each demo README must contain these sections in this exact order:
 
 - **Must** use the heading `## What You Will Learn` exactly
 - Appears before "What You Will Need"
-- Bullet list (using `-` or `*`) of concrete learning outcomes
+- Bullet list using `-` (not `*`) of concrete learning outcomes
 - Each item should describe a specific skill or knowledge the user will gain
 - Use "how to" phrasing where appropriate
 - Example:
