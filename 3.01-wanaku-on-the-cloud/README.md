@@ -166,7 +166,7 @@ oc get pods -l app=keycloak
 Once Keycloak is ready, download the Wanaku realm configuration and use the Wanaku CLI to create the realm:
 
 ```shell
-curl -sLO https://raw.githubusercontent.com/wanaku-ai/wanaku/wanaku-0.1.1/deploy/auth/wanaku-config.json
+curl -sLO https://raw.githubusercontent.com/wanaku-ai/wanaku/wanaku-0.1.3/deploy/auth/wanaku-config.json
 
 KEYCLOAK_HOST=$(oc get route keycloak -o jsonpath='{.spec.host}')
 
@@ -197,8 +197,8 @@ Save this secret — you will need it for the router and capability specs.
 First, download the Helm chart from the Wanaku repository:
 
 ```shell
-curl -sL https://github.com/wanaku-ai/wanaku/archive/refs/tags/wanaku-0.1.1.tar.gz | \
-  tar xz --strip-components=4 wanaku-wanaku-0.1.1/apps/wanaku-operator/deploy/helm/wanaku-operator
+curl -sL https://github.com/wanaku-ai/wanaku/archive/refs/tags/wanaku-0.1.3.tar.gz | \
+  tar xz --strip-components=4 wanaku-wanaku-0.1.3/apps/wanaku-operator/deploy/helm/wanaku-operator
 ```
 
 This extracts the `wanaku-operator` Helm chart into the current directory.
@@ -235,7 +235,7 @@ spec:
     authServer: http://<KEYCLOAK_HOST>
     authProxy: "auto"
   router:
-    image: quay.io/wanaku/wanaku-router-backend:0.1.1
+    image: quay.io/wanaku/wanaku-router-backend:0.1.3
     imagePullPolicy: Always
 ```
 
@@ -271,7 +271,7 @@ spec:
   routerRef: wanaku-router
   capabilities:
     - name: wanaku-http
-      image: quay.io/wanaku/wanaku-tool-service-http:0.1.1
+      image: quay.io/wanaku/wanaku-tool-service-http:0.1.3
 ```
 
 Apply it:

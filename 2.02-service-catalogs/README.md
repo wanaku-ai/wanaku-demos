@@ -10,7 +10,7 @@ This demo walks you through creating and deploying a Service Catalog — a way t
 
 ## What You Will Need
 
-- **Wanaku CLI** installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.1))
+- **Wanaku CLI** installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.3))
 - **Wanaku running** via `wanaku start local` (see [Getting Started](../1.01-your-first-tool/README.md))
 
 ## Architecture Overview
@@ -166,10 +166,10 @@ The Service Catalog contains Camel routes, but something needs to actually *run*
 [Camel Integration Capability](https://github.com/wanaku-ai/camel-integration-capability) — a standalone
 service that executes the routes and registers itself with the Wanaku router.
 
-Download the jar from the [releases page](https://github.com/wanaku-ai/camel-integration-capability/releases/tag/v0.1.1):
+Download the jar from the [releases page](https://github.com/wanaku-ai/camel-integration-capability/releases/tag/v0.1.3):
 
 ```shell
-wget https://github.com/wanaku-ai/camel-integration-capability/releases/download/v0.1.1/camel-integration-capability-main-0.1.1-jar-with-dependencies.jar
+wget https://github.com/wanaku-ai/camel-integration-capability/releases/download/v0.1.3/camel-integration-capability-main-0.1.3-jar-with-dependencies.jar
 ```
 
 ### Option A: Use the Wanaku UI
