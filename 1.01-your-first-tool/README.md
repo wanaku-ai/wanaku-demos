@@ -43,6 +43,18 @@ unzip wanaku-cli-0.1.3.zip
 
 :::
 
+### PATH Configuration
+
+If you installed the CLI with `get-wanaku.sh`, it is placed in `$HOME/bin`. Some shells do not include `$HOME/bin` in the default `PATH`, so you may need to add it manually before `wanaku` is available as a command.
+
+To add `$HOME/bin` to your `PATH` for the current session:
+
+```shell
+export PATH="$HOME/bin:$PATH"
+```
+
+To make this permanent, add the same line to your shell profile file, such as `~/.bashrc` or `~/.zshrc`, and then reload the shell.
+
 > [!TIP]
 > The **Quick Install** script auto-detects your OS and architecture, downloads the latest release,
 > verifies the checksum, and installs to `$HOME/bin`. You can override the install directory with
