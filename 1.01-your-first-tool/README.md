@@ -108,16 +108,17 @@ This means Wanaku is up and running, and the HTTP capability service is ready to
 Wanaku uses *toolsets* to group related tools together. Let's import a currency conversion toolset so your
 agent can look up exchange rates.
 
-### Option A: Via the Web UI
+:::tabs
+== Via the Web UI
 
 1. Open <http://localhost:8080/admin/#/service-catalog>
 2. Click **Toolsets Repositories Tab**
 3. Expand the **wanaku-toolsets** one.
 4. Import the **currency** one.
 
-### Option B: Via the CLI 
+== Via the CLI
 
-Use this if you prefer to do everything via CLI.
+Import the toolset:
 
 ```shell
 wanaku tools import https://raw.githubusercontent.com/wanaku-ai/wanaku-toolsets/refs/heads/main/toolsets/currency.json
@@ -136,16 +137,25 @@ name                          namespace type uri                                
 free-currency-conversion-tool default   http https://economia.awesomeapi.com.br/last/{parameter.value('fromCurrency')}-{parameter.value('toCurrency')} {}     
 ```
 
+:::
+
 ## Step 5: Connect an AI Agent
 
 Wanaku speaks the [Model Context Protocol](https://modelcontextprotocol.io) (MCP) over HTTP. Any MCP-compatible
-client can connect to it. How you do that will depend on the AI agent you are using. 
+client can connect to it. How you do that will depend on the AI agent you are using.
 
-1. [Claude Desktop](https://claude.com/download): you can run Wanaku's command `wanaku configure claude`
-2. [Cursor](https://cursor.com/): you can run Wanaku's command `wanaku configure cursor`
-3. [Claude Code](https://claude.com/product/claude-code): `claude mcp add wanaku --transport sse http://localhost:8080/mcp/sse`
-4. [IBM Bob](https://bob.ibm.com/): details [here](https://bob.ibm.com/docs/shell/configuration/mcp/mcp-bobshell).
-5. For any other client, `http://localhost:8080/mcp/sse` for SSE or `http://localhost:8080/mcp/` for Streamable HTTP.
+:::tabs
+== Claude Desktop
+On [Claude Desktop](https://claude.com/download) you can run Wanaku's command `wanaku configure claude`
+== Claude Code
+For [Claude Code](https://claude.com/product/claude-code) run `claude mcp add wanaku --transport sse http://localhost:8080/mcp/sse`
+== Cursor
+On [Cursor](https://cursor.com/) you can run Wanaku's command `wanaku configure cursor`
+== IBM Bob
+The details for [IBM Bob](https://bob.ibm.com/) are [here](https://bob.ibm.com/docs/shell/configuration/mcp/mcp-bobshell).
+== Others
+For any other client, `http://localhost:8080/mcp/sse` for SSE or `http://localhost:8080/mcp/` for Streamable HTTP.
+:::
 
 ## Step 6: Testing
 
