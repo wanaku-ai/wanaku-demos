@@ -11,6 +11,12 @@ hero:
       link: ./1.01-your-first-tool/README
 
 features:
+  - title: "Chapter 1: Understanding MCP and Wanaku"
+    details: Learn the concepts behind the Model Context Protocol and how Wanaku extends it with routing, namespaces, and forwarding
+    link: ./1.00-understanding-mcp-and-wanaku/README
+  - title: "Chapter 1: Getting Started with Wanaku"
+    details: Install the Wanaku CLI, start a local instance, add a tool, and use it from an AI agent
+    link: ./1.01-your-first-tool/README
   - title: "Chapter 1: Basic Wanaku Operations"
     details: Manage tools, resources, prompts, and forwards — the four core MCP primitives
     link: ./1.02-basic-wanaku-operations/README
