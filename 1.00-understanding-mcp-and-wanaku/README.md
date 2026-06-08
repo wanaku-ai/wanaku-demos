@@ -2,6 +2,9 @@
 
 Welcome to the Wanaku demo series. Before writing any commands, this guide explains the concepts behind the Model Context Protocol (MCP) and how Wanaku fits into the picture.
 
+> [!TIP]
+> Prefer video? Watch [MCP in Action: Connecting AI to Enterprise Systems](https://www.youtube.com/watch?v=H82o1OcrZGg) by Zineb Bendhiba for a walkthrough of MCP in practice.
+
 ## What You Will Learn
 
 - What MCP is and why it exists
