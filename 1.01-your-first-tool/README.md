@@ -9,6 +9,9 @@ data — no containers, no complex setup.
 1. Java 21 or later
 2. An agent that supports the Model Context Protocol (MCP). 
 
+> [!TIP]
+> If you don't know what MCP is, read our [intro to MCP and Wanaku](../1.00-understanding-mcp-and-wanaku/README.md).
+
 ## Step 1: Install the Wanaku CLI
 
 The CLI ships as **native binaries** for Linux (x86_64) and macOS (AArch64), or as a **Java-based archive**
