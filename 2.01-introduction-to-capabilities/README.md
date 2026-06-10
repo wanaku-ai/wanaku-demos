@@ -1,3 +1,8 @@
+---
+title: "Introduction to Capabilities"
+description: "Understand how capabilities work in Wanaku — built-in HTTP, Exec, and the Camel Integration Capability."
+---
+
 # Introduction to Capabilities
 
 This guide explains what capabilities are in Wanaku, how they work, and what ships out-of-the-box versus what you can extend.

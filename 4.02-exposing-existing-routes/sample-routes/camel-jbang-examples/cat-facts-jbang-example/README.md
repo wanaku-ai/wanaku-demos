@@ -1,3 +1,8 @@
+---
+title: "Exposing Camel Routes (JBang)"
+description: "Expose Apache Camel JBang routes as MCP tools via the Wanaku plugin."
+---
+
 # Cat Facts JBang Example
 
 A Camel JBang application using YAML DSL that fetches random cat facts, demonstrating integration with the Wanaku Camel Integration Capability plugin.

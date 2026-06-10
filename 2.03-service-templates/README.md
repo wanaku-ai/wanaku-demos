@@ -1,3 +1,8 @@
+---
+title: "Service Templates"
+description: "Use reusable, parameterized blueprints to create Wanaku Service Catalogs quickly."
+---
+
 # Service Templates Demo
 
 Service Templates are reusable, parameterized blueprints for creating Service Catalogs. Instead of writing Camel routes from scratch, you pick a template, fill in the parameters, and deploy. This demo shows how to use built-in templates and create your own.

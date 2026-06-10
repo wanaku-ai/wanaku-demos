@@ -1,3 +1,8 @@
+---
+title: "Basic Wanaku Operations"
+description: "Manage tools, resources, prompts, and forwards — the four core MCP primitives in Wanaku."
+---
+
 # Managing Tools, Resources, Prompts, and Forwards
 
 You have Wanaku running. You imported your first tool. Now what? This guide walks you through the day-to-day operations: adding, listing, inspecting, and removing the four core primitives that Wanaku orchestrates.

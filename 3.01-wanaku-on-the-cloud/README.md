@@ -1,3 +1,8 @@
+---
+title: "Wanaku on the Cloud"
+description: "Deploy Wanaku on OpenShift or Kubernetes with Keycloak authentication and the Wanaku Operator."
+---
+
 # Wanaku on the Cloud
 
 This guide walks you through deploying Wanaku on OpenShift (or Kubernetes) in a production-like configuration. By the end, you will have:
