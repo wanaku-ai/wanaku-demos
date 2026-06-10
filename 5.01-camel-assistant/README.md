@@ -1,3 +1,8 @@
+---
+title: "Camel Assistant on OpenShift"
+description: "Build an expert AI assistant for Apache Camel using LangFlow, RAG, and the Wanaku MCP Router."
+---
+
 # Wanaku + Camel Assistant on OpenShift
 
 This guide walks you through deploying a specialized Apache Camel assistant on OpenShift. It uses Retrieval-Augmented Generation (RAG) backed by a Camel dataset, Wanaku MCP Router as the tool provider, and LangFlow as the visual AI designer.

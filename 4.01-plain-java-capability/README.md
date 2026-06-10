@@ -1,3 +1,8 @@
+---
+title: "Building a Plain Java Capability"
+description: "Create a custom echo capability for the Wanaku MCP Router using the Java Capabilities SDK."
+---
+
 # Building a Java Capability for Wanaku
 
 This guide will walk you through creating a simple "echo" capability for Wanaku using Java. 

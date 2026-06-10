@@ -1,3 +1,8 @@
+---
+title: "Exposing Camel Routes (Core)"
+description: "Expose existing Apache Camel core routes as MCP tools via the Wanaku plugin."
+---
+
 # Cat Facts Example
 
 A pure Java Apache Camel application that fetches random cat facts, demonstrating integration with the Wanaku Camel Integration Capability plugin.

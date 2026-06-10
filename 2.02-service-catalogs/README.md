@@ -1,3 +1,8 @@
+---
+title: "Service Catalogs"
+description: "Package Apache Camel routes as MCP tools and deploy them to the Wanaku MCP Router."
+---
+
 # Service Catalogs Demo
 
 This demo walks you through creating and deploying a Service Catalog — a way to package Apache Camel routes as tools that AI agents can use through Wanaku.

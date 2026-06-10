@@ -1,3 +1,8 @@
+---
+title: "Understanding MCP and Wanaku"
+description: "Learn the concepts behind the Model Context Protocol and how Wanaku extends it with routing, namespaces, and forwarding."
+---
+
 # Understanding MCP and Wanaku
 
 Welcome to the Wanaku demo series. Before writing any commands, this guide explains the concepts behind the Model Context Protocol (MCP) and how Wanaku fits into the picture.

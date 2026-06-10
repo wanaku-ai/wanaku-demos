@@ -1,3 +1,8 @@
+---
+title: "Camel Integration Capability"
+description: "Run Apache Camel workloads on Wanaku using the Camel Integration Capability."
+---
+
 # Camel Integration Capability
 
 Enterprise systems don't speak MCP. Your HR database, your inventory API, your

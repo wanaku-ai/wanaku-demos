@@ -1,3 +1,8 @@
+---
+title: "Your First Wanaku Tool"
+description: "Install the Wanaku CLI, start a local instance, add a tool, and call it from an AI agent."
+---
+
 # Getting Started with Wanaku
 
 Welcome to Wanaku! In this guide you will install the Wanaku CLI, start a local instance, add a tool, and
