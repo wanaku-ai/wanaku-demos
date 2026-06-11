@@ -29,6 +29,12 @@ features:
   - title: "Chapter 2: Service Templates"
     details: Use reusable, parameterized blueprints to create Service Catalogs quickly
     link: ./2.03-service-templates/README
+  - title: "Chapter 2: Organizing with Namespaces"
+    details: Use Wanaku namespaces to isolate tools and resources across environments or teams
+    link: ./2.04-organizing-with-namespaces/README
+  - title: "Chapter 2: Aggregating MCP Servers with Forwards"
+    details: Expose tools from upstream MCP servers through a single Wanaku router endpoint using forwards
+    link: ./2.05-aggregating-mcp-servers-with-forwards/README
   - title: "Chapter 3: Wanaku on the Cloud"
     details: Deploy Wanaku on OpenShift with Keycloak authentication and the Wanaku Operator
     link: ./3.01-wanaku-on-the-cloud/README
