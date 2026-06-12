@@ -245,7 +245,7 @@ Try invoking `get-book-by-isbn` with:
 
 The tool should return details for *Camel in Action* from the Open Library API.
 
-![MCP Inspector — get-book-by-isbn result](imgs/get-by-isbn.png)
+![Screenshot of MCP Inspector showing the successful result of calling the get-book-by-isbn tool with ISBN 9781935182368, displaying book details for 'Camel in Action' retrieved from the Open Library API](imgs/get-by-isbn.png)
 
 You can also try `search-books`:
 
@@ -255,7 +255,7 @@ You can also try `search-books`:
 }
 ```
 
-![MCP Inspector — search-books result](imgs/search.png)
+![Screenshot of MCP Inspector showing the successful result of calling the search-books tool with query 'Camel In Action', displaying a list of matching books from the Open Library API with their titles, authors, and publication information](imgs/search.png)
 
 ## What's Next?
 

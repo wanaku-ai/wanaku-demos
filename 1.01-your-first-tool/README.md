@@ -168,7 +168,7 @@ Then ask it a question like:
 
 > How much is 100 USD in CZK?
 
-![Claude call example](claude-call.png)
+![Screenshot of Claude Desktop successfully calling the Wanaku currency conversion tool to convert 100 USD to CZK, showing the AI agent's response with the exchange rate result](claude-call.png)
 
 ## What's Next?
 
