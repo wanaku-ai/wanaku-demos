@@ -1,0 +1,65 @@
+# Monitoring Wanaku in Production
+
+This guide explains how to monitor a Wanaku deployment in production, including health checks, metrics, and logging.
+
+## What You Will Learn
+
+- Wanaku health endpoints and how to use them
+- - Collecting metrics with Prometheus
+  - - Visualizing metrics in Grafana
+    - - Setting up log aggregation
+     
+      - ## What You Will Need
+     
+      - - A running Wanaku deployment (Kubernetes recommended for production)
+        - - Prometheus and Grafana (or a compatible observability stack)
+         
+          - ## Step 1: Health Check Endpoints
+         
+          - Wanaku exposes standard Kubernetes-compatible health endpoints:
+         
+          - - `/q/health/live` — Liveness probe
+            - - `/q/health/ready` — Readiness probe
+              - - `/q/health` — Combined health status
+               
+                - ```bash
+                  curl http://localhost:9000/q/health/ready
+                  ```
+
+                  ## Step 2: Metrics with Prometheus
+
+                  Wanaku exposes Prometheus metrics at `/q/metrics`. Key metrics:
+
+                  - `wanaku_tool_invocations_total` — Total tool invocations
+                  - - `wanaku_tool_invocation_duration_seconds` — Tool invocation latency
+                    - - `wanaku_capabilities_registered` — Number of registered capabilities
+                      - - `wanaku_resource_reads_total` — Total resource reads
+                       
+                        - Prometheus scrape config:
+                       
+                        - ```yaml
+                          scrape_configs:
+                            - job_name: 'wanaku-router'
+                              static_configs:
+                                - targets: ['wanaku-router:9000']
+                              metrics_path: /q/metrics
+                          ```
+
+                          ## Step 3: Grafana Dashboard
+
+                          Import the Wanaku Grafana dashboard from the `monitoring/` directory of the wanaku repository to visualize tool invocation rates, latency percentiles, and error rates.
+
+                          ## Step 4: Log Aggregation
+
+                          Wanaku uses structured JSON logging. Key fields to index: `traceId`, `toolName`, `capabilityName`, `duration`, `status`.
+
+                          ## Step 5: Alerting Recommendations
+
+                          Set up alerts for: liveness probe failures, error rate above 1% sustained for 5 minutes, p99 latency above 5 seconds, and zero capabilities registered.
+
+                          ## What's Next?
+
+                          - [Security Best Practices](../security-best-practices/README.md)
+                          - - [Troubleshooting Guide](../troubleshooting/README.md)
+                           
+                            - If you find a bug, please report it. Visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).
