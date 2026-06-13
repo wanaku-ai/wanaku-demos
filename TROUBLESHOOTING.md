@@ -21,6 +21,22 @@ Start with the basics:
 
 Most startup failures are setup drift, not code bugs.
 
+## LangFlow cannot see Wanaku or other MCP tools
+
+If LangFlow loads but no Wanaku tools appear:
+
+- confirm the Wanaku route URL is the one copied into LangFlow MCP settings
+- check that the route is reachable from the browser, not only from the cluster
+- reload the MCP server entry after changing the URL or auth settings
+
+## Ollama or Qdrant setup fails
+
+If the assistant stack breaks during model or vector setup:
+
+- verify Ollama has the expected model pulled before starting LangFlow
+- confirm Qdrant URL is set in the component, not the host-only field
+- check that the route host from OpenShift matches the value pasted into LangFlow
+
 ## Capability or demo changes do not appear
 
 If you edited files and nothing changes in the UI:
@@ -43,7 +59,8 @@ If one service can start but requests fail later:
 
 - verify the target service is healthy
 - compare request shape with what the demo expects
-- check whether the error is a timeout, 404, or auth failure
+- check whether the error is a timeout, 404, 401, or auth failure
+- inspect the service logs for route or payload mismatch
 
 ## Which demo should I debug first?
 
