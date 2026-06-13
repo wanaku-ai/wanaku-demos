@@ -1,49 +1,56 @@
 # Troubleshooting Guide
 
-This guide collects common problems people hit while running the Wanaku demos
-locally and the first checks that usually resolve them.
+This guide covers the most common Wanaku demo failures: wrong version, missing
+configuration, port conflicts, and auth or endpoint mismatch.
 
-## Demo builds but does not start
+## Demo starts, but version is wrong
 
-Checks:
+If the demo works but behavior does not match the guide:
 
-- confirm you are using the Wanaku version expected by the demo branch
-- re-run the setup steps from the specific demo directory
-- inspect the terminal output for missing environment variables or ports already in use
+- confirm you are on the branch or tag that matches the walkthrough
+- rerun setup from the demo directory, not from repo root
+- compare your local `README.md` with the versioned demo docs
 
-## Capability changes do not appear
+## Demo does not start
 
-If you edited a capability or template and nothing changes:
+Start with the basics:
 
-- rebuild the project or restart the dev process
-- confirm you updated the files used by the demo you are currently running
-- check whether cached generated assets need to be regenerated
+- inspect terminal output for missing environment variables
+- check whether the expected port is already in use
+- restart the dev process after changing config files
 
-## Service-to-service integration fails
+Most startup failures are setup drift, not code bugs.
 
-Start with:
+## Capability or demo changes do not appear
 
-- endpoint URL
-- credentials / local auth config
-- container or local process health
-- expected request payload shape
+If you edited files and nothing changes in the UI:
 
-Many integration problems are simple wiring mismatches rather than framework bugs.
+- rebuild the app or restart the local process
+- confirm you changed the files for the demo you are actually running
+- clear any generated or cached assets if the demo renders from them
 
-## Local AI provider errors
+## Auth or endpoint lookup fails
 
-When a demo uses a model provider or local inference runtime:
+When a demo depends on Keycloak, OpenShift routes, or another service:
 
-- verify the provider is reachable
-- verify required model names are available locally
-- confirm API keys or local tokens are loaded in the current shell
+- verify the URL is reachable from the current shell
+- confirm the token, secret, or route host matches current cluster state
+- check for stale copied values from an earlier setup run
+
+## Integration call fails
+
+If one service can start but requests fail later:
+
+- verify the target service is healthy
+- compare request shape with what the demo expects
+- check whether the error is a timeout, 404, or auth failure
 
 ## Which demo should I debug first?
 
-If you are unsure where a failure originates:
+If you are unsure where failure originates:
 
-1. start with the smallest demo in the same topic family
-2. confirm its baseline behavior
-3. move to the more advanced demo once the simpler flow works
+1. start with smallest demo in same topic family
+2. confirm baseline behavior
+3. move to advanced demo once simple flow works
 
-This reduces false assumptions caused by debugging too many moving parts at once.
+This avoids debugging too many moving parts at once.
