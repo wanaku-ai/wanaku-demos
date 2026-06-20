@@ -2,6 +2,10 @@
 
 Demos to help you get started with Wanaku. 
 
+## Demo 4.02: Exposing Existing Routes
+
+Learn how to take existing Camel routes and expose them through Wanaku as MCP tools. See [4.02-exposing-existing-routes](./4.02-exposing-existing-routes) for parameter mapping, the CIC plugin approach vs standalone capability, and when to use service catalogs vs direct route exposure. Navigation: 4.01 → 4.02 → 4.03 → 5.01.
+
 The demos will always display the content for the latest version of Wanaku. If you are following a guide for and older 
 one, then check the table below.
 
