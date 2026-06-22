@@ -44,6 +44,9 @@ features:
   - title: "Chapter 3: Camel Integration Capability"
     details: Run Apache Camel workloads on Wanaku using the Camel Integration Capability
     link: ./3.02-camel-integration-capability/README
+  - title: "Security Best Practices"
+    details: Harden production Wanaku deployments — secret management, network policies, least privilege, and audit logging
+    link: ./docs/security-best-practices
   - title: "Chapter 4: Building a Plain Java Capability"
     details: Create a simple "echo" capability for Wanaku using the Java Capabilities SDK
     link: ./4.01-plain-java-capability/README
