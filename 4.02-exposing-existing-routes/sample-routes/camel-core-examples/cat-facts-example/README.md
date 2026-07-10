@@ -71,7 +71,7 @@ java -jar target/cat-facts-example-1.0-SNAPSHOT-jar-with-dependencies.jar
 Download the plugin JAR and run with classpath:
 
 ```bash
-java -cp /path/to/camel-integration-capability-plugin-0.1.0-SNAPSHOT-shaded.jar:target/cat-facts-example-1.0-SNAPSHOT-jar-with-dependencies.jar \
+java -cp /path/to/camel-integration-capability-plugin-0.2.0-shaded.jar:target/cat-facts-example-1.0-SNAPSHOT-jar-with-dependencies.jar \
 ai.wanaku.demos.camel.core.CatFactsMain
 ```
 

@@ -74,7 +74,7 @@ Each demo README must contain these sections in this exact order:
   - Cluster access, credentials, or other environmental prerequisites
   - Link to download pages or installation guides where appropriate
 - Examples:
-  - `- Wanaku CLI installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.3))`
+  - `- Wanaku CLI installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.2.0))`
   - `- Java 21 or later`
   - `You must have completed [demo 1.01](../1.01-your-first-tool/README.md).`
 
@@ -121,7 +121,7 @@ Each demo README must contain these sections in this exact order:
   mvn -B archetype:generate \
       -DarchetypeGroupId=ai.wanaku.sdk \
       -DarchetypeArtifactId=capabilities-archetypes-java-tool \
-      -DarchetypeVersion=0.1.0
+      -DarchetypeVersion=0.2.0
   ```
   ````
 
@@ -179,7 +179,7 @@ Examples:
 
 - Use descriptive link text, not "click here" or raw URLs
 - Internal demo links use relative paths: `[demo 1.01](../1.01-your-first-tool/README.md)`
-- External links use full URLs with descriptive anchor text: `[releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.3)`
+- External links use full URLs with descriptive anchor text: `[releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.2.0)`
 - Prefer inline links over reference-style links
 - Link to prior demos when they provide necessary context
 
@@ -261,9 +261,9 @@ These sections are optional but should follow established patterns if included:
 ### Version and Release References
 
 - Always reference specific versions when linking to releases or Docker images
-- Example: `v0.1.3`, `wanaku-0.1.3`, `quay.io/wanaku/wanaku-router-backend:0.1.3`
+- Example: `v0.2.0`, `wanaku-0.2.0`, `quay.io/wanaku/wanaku-router-backend:0.2.0`
 - If version is environment-specific, explain how to determine the correct version
-- Link to release pages where users can find the latest version: `[releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.3)`
+- Link to release pages where users can find the latest version: `[releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.2.0)`
 
 ### Content That Should NOT Appear
 

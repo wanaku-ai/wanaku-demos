@@ -24,12 +24,12 @@ First, generate a new capability project using the Wanaku SDK's Maven archetype.
 mvn -B archetype:generate \
     -DarchetypeGroupId=ai.wanaku.sdk \
     -DarchetypeArtifactId=capabilities-archetypes-java-tool \
-    -DarchetypeVersion=0.1.0 \
+    -DarchetypeVersion=0.2.0 \
     -DgroupId=net.orpiske \
     -Dpackage=net.orpiske \
     -DartifactId=echo \
     -Dname=EchoService \
-    -Dwanaku-sdk-version=0.1.0
+    -Dwanaku-sdk-version=0.2.0
 ```
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ Let's launch the service and test it with Wanaku.
 
     ```shell
     # Example using Podman
-    podman run -d -p 8080:8080 quay.io/wanaku/wanaku-router-backend:0.1.0
+    podman run -d -p 8080:8080 quay.io/wanaku/wanaku-router-backend:0.2.0
     ```
 
 3.  **Set the Environment Variable** Export the `MCP_ECHO` variable with a test value.
