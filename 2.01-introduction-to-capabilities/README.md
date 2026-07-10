@@ -17,7 +17,7 @@ This guide explains what capabilities are in Wanaku, how they work, and what shi
 
 ## What You Will Need
 
-- **Wanaku CLI** installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.3))
+- **Wanaku CLI** installed (download from [releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.2.0))
 - **Wanaku running** via `wanaku start local` (see [Getting Started](../1.01-your-first-tool/README.md))
 
 ## Step 1: Understanding Capabilities
