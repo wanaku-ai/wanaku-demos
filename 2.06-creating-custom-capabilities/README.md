@@ -155,6 +155,29 @@ java \
 
 For the resource provider, use a different gRPC port if both services run at the same time.
 
+### Running against a local no-auth router
+
+The generated capability projects include OIDC authentication by default. If you are running the router locally in
+`noauth` mode, the capability will fail to start until you re-augment it to disable OIDC.
+
+Do this once per build:
+
+```shell
+java -Dquarkus.launch.rebuild=true -Dquarkus.oidc-client.enabled=false -jar target/quarkus-app/quarkus-run.jar
+```
+
+Then start it normally, adjusting the port and router URL as needed:
+
+```shell
+java \
+  -Dquarkus.http.port=9010 \
+  -Dwanaku.service.registration.uri=http://localhost:8080 \
+  -jar target/quarkus-app/quarkus-run.jar
+```
+
+The augmentation change persists until the next `mvn clean package`, so you only need to repeat this step after a fresh
+build.
+
 ## Step 6: Verify the capability registration
 
 Check that both services registered with Wanaku:
