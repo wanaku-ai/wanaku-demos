@@ -150,7 +150,11 @@ The [wanaku-examples](https://github.com/wanaku-ai/wanaku-examples) repository c
 
 ### Where to Learn More
 
-Chapter 4 covers building custom capabilities from scratch:
+If you want to scaffold a capability first, start with:
+
+- [Creating Custom Capabilities](../2.06-creating-custom-capabilities/README.md) - hands-on guide to scaffolding tool and resource capability services with the CLI
+
+For more advanced customization, chapter 4 covers building custom capabilities from scratch:
 
 - [Building a Java Capability](../4.01-plain-java-capability/README.md) — step-by-step guide to building a tool invoker capability
 - [Exposing Existing Camel Routes](../4.02-exposing-existing-routes/README.md) — wrapping existing Camel routes as capabilities

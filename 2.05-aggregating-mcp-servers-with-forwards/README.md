@@ -84,8 +84,8 @@ After removal, the forwarded tools will no longer appear in `wanaku tools list`.
 
 ## What's Next?
 
+- [2.06 Creating Custom Capabilities](../2.06-creating-custom-capabilities/README.md) — scaffold new tool and resource capability services
 - [3.01 Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) — deploy Wanaku to Kubernetes or OpenShift
-- [3.02 Camel Integration Capability](../3.02-camel-integration-capability/README.md) — advanced enterprise integrations
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
 To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).
