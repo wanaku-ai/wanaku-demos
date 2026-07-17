@@ -490,6 +490,7 @@ You now have a working AI assistant backed by Apache Camel documentation, intern
 - Add more tools to Wanaku and see the agent pick them up automatically
 - Customize the agent's behavior in the LangFlow UI
 - Review the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide for a production deployment with authentication
+- Monitor your deployment with [Prometheus metrics, health checks, and logging](../5.02-monitoring-wanaku-in-production/README.md)
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
 To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).
