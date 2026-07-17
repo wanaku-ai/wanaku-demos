@@ -53,6 +53,9 @@ features:
   - title: "Chapter 4: Exposing Existing Camel Routes"
     details: Expose existing Apache Camel routes as MCP tools via the Wanaku Camel Integration Capability plugin or standalone
     link: ./4.02-exposing-existing-routes/README
+  - title: "Chapter 4: Building a Resource Provider"
+    details: Create a custom file resource provider for the Wanaku MCP Router using `wanaku capabilities create resource`
+    link: ./4.03-building-a-resource-provider/README
   - title: "Chapter 5: Camel Assistant"
     details: Build an expert AI agent for Apache Camel with LangFlow and Wanaku
     link: ./5.01-camel-assistant/README
