@@ -148,6 +148,7 @@ You can find the complete sample code for this example in the [wanaku-echo-capab
 
 ## What's Next?
 
+- [Exposing Existing Camel Routes](../4.02-exposing-existing-routes/README.md) (demo 4.02) — expose Apache Camel routes as MCP tools without writing custom capability code
 - [Camel Assistant](../5.01-camel-assistant/README.md) (demo 5.01) — build an AI assistant backed by Apache Camel documentation and Wanaku tools
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
