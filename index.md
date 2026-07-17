@@ -56,4 +56,7 @@ features:
   - title: "Chapter 5: Camel Assistant"
     details: Build an expert AI agent for Apache Camel with LangFlow and Wanaku
     link: ./5.01-camel-assistant/README
+  - title: "Chapter 5: Monitoring Wanaku in Production"
+    details: Set up observability with Prometheus metrics, health checks, and centralized logging
+    link: ./5.02-monitoring-wanaku-in-production/README
 ---
