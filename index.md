@@ -44,6 +44,9 @@ features:
   - title: "Chapter 3: Camel Integration Capability"
     details: Run Apache Camel workloads on Wanaku using the Camel Integration Capability
     link: ./3.02-camel-integration-capability/README
+  - title: "Chapter 3: Authentication Deep Dive"
+    details: Understand how OAuth2 and OIDC work in Wanaku — from concepts to troubleshooting
+    link: ./3.03-authentication-deep-dive/README
   - title: "Chapter 4: Building a Plain Java Capability"
     details: Create a simple "echo" capability for Wanaku using the Java Capabilities SDK
     link: ./4.01-plain-java-capability/README
