@@ -343,6 +343,7 @@ route definition.
 
 ## What's Next?
 
+- [Authentication deep dive](../3.03-authentication-deep-dive/README.md) (demo 3.03) — understand how OAuth2 and OIDC work in Wanaku, from concepts to troubleshooting
 - [Building a Java Capability](../4.01-plain-java-capability/README.md) (demo 4.01) — build your own capability service from scratch using Java and the Wanaku Capabilities SDK
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
