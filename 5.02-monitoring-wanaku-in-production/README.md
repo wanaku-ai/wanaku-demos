@@ -23,8 +23,8 @@ Production deployments of Wanaku need more than a running pod — you need to kn
 - **Prometheus stack** (the `kube-prometheus-stack` Helm chart) installed in the cluster, or an external Prometheus server that can reach Wanaku routes
 - **Completed [demo 5.01](../5.01-camel-assistant/README.md)** — you should have a working Wanaku deployment with at least one capability already registered
 - Background reading:
-- [Performance tests](https://github.com/wanaku-ai/wanaku/blob/main/docs/performance-tests.md) — explains load-testing the Wanaku router
-- [Camel Integration Capability operations](https://github.com/wanaku-ai/camel-integration-capability/blob/main/docs/operations.md) — health checks, scaling, and container best practices
+  - [Performance tests](https://github.com/wanaku-ai/wanaku/blob/main/docs/performance-tests.md) — explains load-testing the Wanaku router
+  - [Camel Integration Capability operations](https://github.com/wanaku-ai/camel-integration-capability/blob/main/docs/operations.md) — health checks, scaling, and container best practices
 
 ## Architecture Overview
 
@@ -59,7 +59,7 @@ The monitoring path uses the observability components that are already built int
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-Wanaku's router backend already ship with:
+Wanaku's router backend already ships with:
 - **Micrometer + Prometheus** — the `quarkus-micrometer-registry-prometheus` extension is on the classpath, exposing JVM, HTTP, and gRPC metrics at `/q/metrics` with zero custom code
 - **SmallRye Health** — liveness, readiness, and startup probes at `/q/health/live`, `/q/health/ready`, `/q/health/started`, all unauthenticated
 - **OpenTelemetry** — a fully instrumented gRPC pipeline with an OTLP gRPC exporter, disabled by default, toggled at runtime; send the trace stream to any OTLP receiver (Jaeger, Tempo, vendor APM)
@@ -239,7 +239,7 @@ Useful categories for debugging:
 
 | Logger pattern | What you see |
 | --- | --- |
-| `ai.wanaku'` | Router business logic, capability registration |
+| `ai.wanaku` | Router business logic, capability registration |
 | `ai.wanaku.backend.health` | Periodic gRPC health probe results |
 | `io.quarkiverse.mcp` | MCP server request/deserialization |
 | `io.quarkus.oidc` | OIDC token validation (when auth is on) |
@@ -350,7 +350,7 @@ Expected output starts with:
 # TYPE jvm_memory_used_bytes gauge
 jvm_memory_used_bytes{area="heap",id="G1 Survivor Space", ...} 1.22944E7
 ...
-http_server_request_seconds_count{method="GET",uri="/q/health/ready",status_code="200"} 42
+http_server_requests_seconds_count{method="GET",uri="/q/health/ready",status_code="200"} 42
 ```
 
 ### 6.2 Verify Health Responses
@@ -437,8 +437,5 @@ roleRef:
   name: prometheus-k8s
   apiGroup: rbac.authorization.k8s.io
 ```
-
-> [!TIP]
-> The `wc` command is not needed in OpenShift — use `oc` equivalents shown above.
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues). To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

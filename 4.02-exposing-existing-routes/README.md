@@ -82,17 +82,17 @@ The rules file (`meow-rules.yaml`) is the bridge between MCP and Camel. It decla
 mcp:
   tools:
     - cat-facts-route:
-      route:
-        id: "cat-facts-route"
+        route:
+          id: "cat-facts-route"
         description: "Retrieve random facts about cats"
-      properties:
-        - name: count
-          type: int
-          description: Number of facts to retrieve
-          required: true
-          mapping:
-            type: header
-            name: COUNT
+        properties:
+          - name: count
+            type: int
+            description: Number of facts to retrieve
+            required: true
+            mapping:
+              type: header
+              name: COUNT
 ```
 
 ### Plugin vs Standalone
@@ -118,8 +118,6 @@ The samples are in `sample-routes/` inside this directory:
 ```
 
 ## Step 2: Write the Rules File
-
-Create a file named `meow-rules.yaml`. This is the only configuration you need to write:
 
 Create a file named `meow-rules.yaml` (relative to the example's working directory):
 
