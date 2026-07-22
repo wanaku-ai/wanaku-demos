@@ -18,7 +18,7 @@ This guide shows you two ways to make that happen: the plugin approach (embed th
 ## What You Will Need
 
 - **Wanaku running locally** via `wanaku start local` (see [demo 1.01](../1.01-your-first-tool/README.md))
-- **Wanaku CLI** installed ([releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.1.3))
+- **Wanaku CLI** installed ([releases page](https://github.com/wanaku-ai/wanaku/releases/tag/v0.2.0))
 - **Java 21+**
 - **Apache Maven 3.8+**
 - **Camel JBang** installed (for the JBang example only) — instructions at [camel.apache.org](https://camel.apache.org/manual/camel-jbang.html)
@@ -230,7 +230,7 @@ export ROUTES_RULES=file://$PWD/config/meow-rules.yaml
 ### 4b. Run with Camel JBang
 
 ```shell
-camel run --dep ai.wanaku.sdk:capabilities-runtime-camel-plugin:0.1.0 \
+camel run --dep ai.wanaku.sdk:capabilities-runtime-camel-plugin:0.2.0 \
   sample-routes/camel-jbang-examples/cat-facts-jbang-example/cat-facts-route.camel.yaml
 ```
 
@@ -369,7 +369,7 @@ The plugin requires `camel-integration-capability-plugin` as a dependency. With 
 <dependency>
   <groupId>ai.wanaku</groupId>
   <artifactId>camel-integration-capability-plugin</artifactId>
-  <version>0.1.1</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
