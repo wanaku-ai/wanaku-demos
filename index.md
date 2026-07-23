@@ -44,6 +44,9 @@ features:
   - title: "Chapter 3: Camel Integration Capability"
     details: Run Apache Camel workloads on Wanaku using the Camel Integration Capability
     link: ./3.02-camel-integration-capability/README
+  - title: "Security Best Practices"
+    details: Harden production Wanaku deployments — secret management, network policies, least privilege, and audit logging
+    link: ./docs/security-best-practices
   - title: "Chapter 3: Authentication Deep Dive"
     details: Understand how OAuth2 and OIDC work in Wanaku — from concepts to troubleshooting
     link: ./3.03-authentication-deep-dive/README
