@@ -397,6 +397,7 @@ If using Podman/Docker, set `REGISTRATION_ANNOUNCE_ADDRESS` to an address reacha
 
 ## What's Next?
 
+- [Building a Resource Provider](../4.03-building-a-resource-provider/README.md) (demo 4.03) — create a custom file resource provider for the Wanaku MCP Router
 - [Camel Assistant](../5.01-camel-assistant/README.md) (demo 5.01) — build an AI assistant backed by Apache Camel documentation and Wanaku tools
 - [Camel Integration Capability](../3.02-camel-integration-capability/README.md) (demo 3.02) — full cloud deployment of the CIC on OpenShift
 

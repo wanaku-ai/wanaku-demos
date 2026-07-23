@@ -64,3 +64,7 @@ Once registered, the route is exposed as an MCP tool:
 | Tool              | Description                      | Parameters                                            |
 |-------------------|----------------------------------|-------------------------------------------------------|
 | `cat-facts-route` | Retrieve random facts about cats | `count` (int, required) - number of facts to retrieve |
+
+## What's Next?
+
+- [Building a Resource Provider](../../../../4.03-building-a-resource-provider/README.md) (demo 4.03) — create a custom file resource provider for the Wanaku MCP Router
