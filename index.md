@@ -59,4 +59,7 @@ features:
   - title: "Chapter 5: Monitoring Wanaku in Production"
     details: Set up observability with Prometheus metrics, health checks, and centralized logging
     link: ./5.02-monitoring-wanaku-in-production/README
+  - title: "Guide: Testing Capabilities"
+    details: Test capabilities locally, mock the router for unit tests, write integration tests, and validate service catalog deployments
+    link: ./docs/testing-capabilities
 ---

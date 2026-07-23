@@ -5,6 +5,10 @@ Demos to help you get started with Wanaku.
 The demos will always display the content for the latest version of Wanaku. If you are following a guide for and older 
 one, then check the table below.
 
+## Guides
+
+- [Testing Capabilities](./docs/testing-capabilities.md) — test capabilities locally, mock the router for unit tests, and validate service catalog deployments
+
 ## Released Versions
 
 | Version                                                                    |
