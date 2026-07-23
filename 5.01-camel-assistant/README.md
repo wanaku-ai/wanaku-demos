@@ -201,7 +201,7 @@ oc wait --for=condition=ready pod -l app=keycloak -n camel-assistant --timeout=3
 Once Keycloak is ready, download the Wanaku realm configuration and create the realm:
 
 ```shell
-curl -sLO https://raw.githubusercontent.com/wanaku-ai/wanaku/wanaku-0.1.3/deploy/auth/wanaku-config.json
+curl -sLO https://raw.githubusercontent.com/wanaku-ai/wanaku/wanaku-0.2.0/deploy/auth/wanaku-config.json
 
 KEYCLOAK_HOST=$(oc get route keycloak -n camel-assistant -o jsonpath='{.spec.host}')
 
@@ -230,8 +230,8 @@ echo "OIDC Secret: ${OIDC_SECRET}"
 Download the Helm chart from the Wanaku repository:
 
 ```shell
-curl -sL https://github.com/wanaku-ai/wanaku/archive/refs/tags/wanaku-0.1.3.tar.gz | \
-  tar xz --strip-components=4 wanaku-wanaku-0.1.3/apps/wanaku-operator/deploy/helm/wanaku-operator
+curl -sL https://github.com/wanaku-ai/wanaku/archive/refs/tags/wanaku-0.2.0.tar.gz | \
+  tar xz --strip-components=4 wanaku-wanaku-0.2.0/apps/wanaku-operator/deploy/helm/wanaku-operator
 ```
 
 Install the operator:
@@ -490,6 +490,7 @@ You now have a working AI assistant backed by Apache Camel documentation, intern
 - Add more tools to Wanaku and see the agent pick them up automatically
 - Customize the agent's behavior in the LangFlow UI
 - Review the [Wanaku on the Cloud](../3.01-wanaku-on-the-cloud/README.md) guide for a production deployment with authentication
+- Monitor your deployment with [Prometheus metrics, health checks, and logging](../5.02-monitoring-wanaku-in-production/README.md)
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).
 To get in touch with the community, visit the [Wanaku project](https://github.com/wanaku-ai/wanaku).

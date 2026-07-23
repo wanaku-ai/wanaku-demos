@@ -24,12 +24,12 @@ First, generate a new capability project using the Wanaku SDK's Maven archetype.
 mvn -B archetype:generate \
     -DarchetypeGroupId=ai.wanaku.sdk \
     -DarchetypeArtifactId=capabilities-archetypes-java-tool \
-    -DarchetypeVersion=0.1.0 \
+    -DarchetypeVersion=0.2.0 \
     -DgroupId=net.orpiske \
     -Dpackage=net.orpiske \
     -DartifactId=echo \
     -Dname=EchoService \
-    -Dwanaku-sdk-version=0.1.0
+    -Dwanaku-sdk-version=0.2.0
 ```
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ Let's launch the service and test it with Wanaku.
 
     ```shell
     # Example using Podman
-    podman run -d -p 8080:8080 quay.io/wanaku/wanaku-router-backend:0.1.0
+    podman run -d -p 8080:8080 quay.io/wanaku/wanaku-router-backend:0.2.0
     ```
 
 3.  **Set the Environment Variable** Export the `MCP_ECHO` variable with a test value.
@@ -148,6 +148,7 @@ You can find the complete sample code for this example in the [wanaku-echo-capab
 
 ## What's Next?
 
+- [Exposing Existing Camel Routes](../4.02-exposing-existing-routes/README.md) (demo 4.02) — expose Apache Camel routes as MCP tools without writing custom capability code
 - [Camel Assistant](../5.01-camel-assistant/README.md) (demo 5.01) — build an AI assistant backed by Apache Camel documentation and Wanaku tools
 
 If you find a bug, please [report it](https://github.com/wanaku-ai/wanaku/issues).

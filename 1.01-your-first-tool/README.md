@@ -29,23 +29,23 @@ curl -sSL https://wanaku.ai/get-wanaku.sh | bash
 ```
 
 ```shell [macOS (AArch64)]
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.3/wanaku-cli-0.1.3-osx-aarch_64.zip
-unzip wanaku-cli-0.1.3-osx-aarch_64.zip
-install -m 750 wanaku-cli-0.1.3-osx-aarch_64/bin/wanaku wanaku-cli-0.1.3-osx-aarch_64/bin/wanaku-cli $HOME/bin/
-rm -rf wanaku-cli-0.1.3-osx-aarch_64 wanaku-cli-0.1.3-osx-aarch_64.zip
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.2.0/wanaku-cli-0.2.0-osx-aarch_64.zip
+unzip wanaku-cli-0.2.0-osx-aarch_64.zip
+install -m 750 wanaku-cli-0.2.0-osx-aarch_64/bin/wanaku wanaku-cli-0.2.0-osx-aarch_64/bin/wanaku-cli $HOME/bin/
+rm -rf wanaku-cli-0.2.0-osx-aarch_64 wanaku-cli-0.2.0-osx-aarch_64.zip
 ```
 
 ```shell [Linux (x86_64)]
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.3/wanaku-cli-0.1.3-linux-x86_64.zip
-unzip wanaku-cli-0.1.3-linux-x86_64.zip
-install -m 750 wanaku-cli-0.1.3-linux-x86_64/bin/wanaku wanaku-cli-0.1.3-linux-x86_64/bin/wanaku-cli $HOME/bin/
-rm -rf wanaku-cli-0.1.3-linux-x86_64 wanaku-cli-0.1.3-linux-x86_64.zip
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.2.0/wanaku-cli-0.2.0-linux-x86_64.zip
+unzip wanaku-cli-0.2.0-linux-x86_64.zip
+install -m 750 wanaku-cli-0.2.0-linux-x86_64/bin/wanaku wanaku-cli-0.2.0-linux-x86_64/bin/wanaku-cli $HOME/bin/
+rm -rf wanaku-cli-0.2.0-linux-x86_64 wanaku-cli-0.2.0-linux-x86_64.zip
 ```
 
 ```shell [Windows / Other]
 # Requires Java 21+
-wget https://github.com/wanaku-ai/wanaku/releases/download/v0.1.3/wanaku-cli-0.1.3.zip
-unzip wanaku-cli-0.1.3.zip
+wget https://github.com/wanaku-ai/wanaku/releases/download/v0.2.0/wanaku-cli-0.2.0.zip
+unzip wanaku-cli-0.2.0.zip
 # Add the extracted bin/ directory to your PATH
 ```
 

@@ -47,13 +47,19 @@ features:
   - title: "Security Best Practices"
     details: Harden production Wanaku deployments — secret management, network policies, least privilege, and audit logging
     link: ./docs/security-best-practices
+  - title: "Chapter 3: Authentication Deep Dive"
+    details: Understand how OAuth2 and OIDC work in Wanaku — from concepts to troubleshooting
+    link: ./3.03-authentication-deep-dive/README
   - title: "Chapter 4: Building a Plain Java Capability"
     details: Create a simple "echo" capability for Wanaku using the Java Capabilities SDK
     link: ./4.01-plain-java-capability/README
   - title: "Chapter 4: Exposing Existing Camel Routes"
-    details: Expose existing Apache Camel routes as MCP tools via the Wanaku plugin
-    link: ./4.02-exposing-existing-routes/sample-routes/camel-core-examples/cat-facts-example/README
+    details: Expose existing Apache Camel routes as MCP tools via the Wanaku Camel Integration Capability plugin or standalone
+    link: ./4.02-exposing-existing-routes/README
   - title: "Chapter 5: Camel Assistant"
     details: Build an expert AI agent for Apache Camel with LangFlow and Wanaku
     link: ./5.01-camel-assistant/README
+  - title: "Chapter 5: Monitoring Wanaku in Production"
+    details: Set up observability with Prometheus metrics, health checks, and centralized logging
+    link: ./5.02-monitoring-wanaku-in-production/README
 ---
